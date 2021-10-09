@@ -1,0 +1,44 @@
+[
+    {
+        "park_name": "WOODLANDS WATERFRONT PK",
+        "coordinates": "1.44883613021403, 103.771463555332005",
+        "facilities": [
+            "SHELTER",
+            "TOILET",
+            "F&B",
+            "EVENT SPACE",
+            "FITNESS AREA"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "PUNGGOL PK",
+        "coordinates": "1.37503347998313, 103.898299382587993",
+        "facilities": [
+            "SHELTER",
+            "FITNESS AREA",
+            "FOOT RELAX",
+            "PLAYGROUND",
+            "BICYCLE RENTAL SHOP",
+            "EVENT SPACE",
+            "WATER BODY",
+            "TOILET",
+            "WOODBALL",
+            "F&B",
+            "WATER POINT"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "SUN PLAZA PK",
+        "coordinates": "1.35949300682137, 103.943520007794007",
+        "facilities": [
+            "SHELTER",
+            "TOILET",
+            "BEACH VOLLEY",
+            "PLAYGROUND",
+            "EVENT SPACE"
+        ],
+        "region": "Sembawang"
+    }
+]

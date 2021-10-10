@@ -12,6 +12,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { CheckBox } from 'react-native-elements'
 
 const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
 
@@ -53,7 +54,6 @@ export default function SearchFilterScreen({ navigation }) {
             const response = await fetch(API_URL);
             const json = await response.json();
             setParks(json);
-            filterParks();
         } catch (error) {
             console.log(error);
         } finally {
@@ -61,7 +61,11 @@ export default function SearchFilterScreen({ navigation }) {
         }
     }
 
-    const filterParks = async () => {
+    useEffect(() => {
+        getParks();
+    }, []);
+
+    const filterParks = () => {
         let matchedParks = [...parks];
         for (var i = 0; i < parks.length; i++) {
             const matchedFilters = parks[i].facilities.filter(value => selected.includes(value));
@@ -73,6 +77,10 @@ export default function SearchFilterScreen({ navigation }) {
         console.log(matchedParks)
     }
 
+    useEffect(() => {
+        filterParks();
+    }, [selected])
+
     const saveResults = async () => {
         try {
             await AsyncStorage.setItem('SearchResults', JSON.stringify(results))
@@ -81,13 +89,6 @@ export default function SearchFilterScreen({ navigation }) {
             console.log(error);
         }
     }
-
-
-
-    useEffect(() => {
-        getParks();
-        filterParks();
-    }, []);
 
 
     return (

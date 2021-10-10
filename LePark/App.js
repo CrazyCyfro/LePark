@@ -13,8 +13,8 @@ const Stack = createStackNavigator();
 function SearchStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Filters" component={SearchFilterScreen} />
-      {/* <Stack.Screen name="Results" component={} /> */}
+      <Stack.Screen name='Filters' component={SearchFilterScreen} />
+      {/* <Stack.Screen name='Results' component={} /> */}
     </Stack.Navigator>
   )
 }

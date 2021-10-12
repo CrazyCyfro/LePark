@@ -6,7 +6,8 @@ import { StyleSheet,
     SectionList,
     FlatList,
     ActivityIndicator,
-    TouchableOpacity } from 'react-native';
+    TouchableOpacity,
+    SafeAreaView} from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -21,33 +22,88 @@ export default function SearchFilterScreen({ navigation }) {
     const [isLoading, setLoading] = useState(true);
     const [parks, setParks] = useState([]);
     const [results, setResults] = useState([]);
-    const [filters, setFilters] = useState([
-        "SHELTER",
-        "TOILET",
-        "F&B",
-        "EVENT SPACE",
-        "FITNESS AREA",
-        "PLAYGROUND",
-        "ACCESS POINT",
-        "CARPARK",
-        "WATER BODY",
-        "BICYCLE RENTAL SHOP",
-        "DOG-AREA",
-        "BEACH VOLLEY",
-        "FOOT RELAX",
-        "WOODBALL",
-        "WATER POINT",
-        "BUS",
-        "LOOKOUT POINT",
-        "BABY",
-        "BBQ PIT",
-        "SKATEBOARD",
-        "CAMPSITE",
-        "SHOWER",
-        "PICNIC",
-        "CYCLING",
-        "WHEELCHAIR-ACCESS"]);
-    const [selected, setSelected] = useState(['BEACH VOLLEY']);
+    const FILTERS = ["SHELTER",
+            "TOILET",
+            "F&B",
+            "EVENT SPACE",
+            "FITNESS AREA",
+            "PLAYGROUND",
+            "ACCESS POINT",
+            "CARPARK",
+            "WATER BODY",
+            "BICYCLE RENTAL SHOP",
+            "DOG-AREA",
+            "BEACH VOLLEY",
+            "FOOT RELAX",
+            "WOODBALL",
+            "WATER POINT",
+            "BUS",
+            "LOOKOUT POINT",
+            "BABY",
+            "BBQ PIT",
+            "SKATEBOARD",
+            "CAMPSITE",
+            "SHOWER",
+            "PICNIC",
+            "CYCLING",
+            "WHEELCHAIR-ACCESS"]
+    const LOCATIONS = ["Ang Mo Kio",
+            "Bedok",
+            "Bishan",
+            "Boon Lay",
+            "Bukit Batok",
+            "Bukit Merah",
+            "Bukit Panjang",
+            "Bukit Timah",
+            "Central Water Catchment",
+            "Changi",
+            "Changi Bay",
+            "Choa Chu Kang",
+            "Clementi",
+            "Downtown Core",
+            "Geylang",
+            "Hougang",
+            "Jurong East",
+            "Jurong West",
+            "Kallang",
+            "Lim Chu Kang",
+            "Mandai",
+            "Marina East",
+            "Marina South",
+            "Marine Parade",
+            "Museum",
+            "Newton",
+            "North-Eastern Islands",
+            "Novena",
+            "Orchard",
+            "Outram",
+            "Pasir Ris",
+            "Paya Lebar",
+            "Pioneer",
+            "Punggol",
+            "Queenstown",
+            "River Valley",
+            "Rochor",
+            "Seletar",
+            "Sembawang",
+            "Sengkang",
+            "Serangoon",
+            "Simpang",
+            "Singapore River",
+            "Southern Islands",
+            "Straits View",
+            "Sungei Kadut",
+            "Tampines",
+            "Tanglin",
+            "Tengah",
+            "Toa Payoh",
+            "Tuas",
+            "Western Islands",
+            "Western Water Catchment",
+            "Woodlands",
+            "Yishun"]
+    const [selected, setSelected] = useState([]);
+    const [locations, setLocations] = useState([]);
     const [query, setQuery] = useState('');
 
     const getParks = async () => {
@@ -75,7 +131,7 @@ export default function SearchFilterScreen({ navigation }) {
         matchedParks.sort((a, b) => b.matches - a.matches);
         setResults(matchedParks);
         saveResults();
-        console.log(matchedParks)
+        // console.log(matchedParks)
     }
 
     useEffect(() => {
@@ -91,53 +147,129 @@ export default function SearchFilterScreen({ navigation }) {
         }
     }
 
+    const FilterItem = ({ title }) => (
+        <CheckBox
+        style={styles.item}
+        title={title}
+        checked={selected.includes(title)}
+        onPress={() => {
+            let tmp = [...selected];
+
+            if (tmp.includes(title)) {
+                const idx = tmp.indexOf(title);
+                if (idx > -1) {
+                    tmp.splice(idx, 1);
+                }
+                
+            } else {
+                tmp.push(title);
+            }
+            setSelected(tmp);
+        }}
+        />
+    );
+
+    const LocationItem = ({ title }) => (
+        <CheckBox
+        style={styles.item}
+        title={title}
+        checked={locations.includes(title)}
+        onPress={() => {
+            let tmp = [...locations];
+            
+
+            if (tmp.includes(title)) {
+                const idx = tmp.indexOf(title);
+                if (idx > -1) {
+                    tmp.splice(idx, 1);
+                }
+                
+            } else {
+                tmp.push(title);
+            }
+            setLocations(tmp);
+        }}
+        />
+    )
+
+    const ListFooterComponent = (
+        <>
+            <FlatList
+            data={LOCATIONS}
+            keyExtractor={(item, index) => item + index}
+            renderItem={({item}) => <LocationItem title={item}/>}
+            renderSectionHeader={({ section: { title } }) => (
+                <Text style={styles.header}>{title}</Text>
+            )}
+            ListHeaderComponent={
+                <Text style={styles.header}>
+                    LOCATIONS
+                </Text>
+            }
+            />
+        </>
+    )
 
     return (
         <View>
-            <Text
-            style={styles.title}>
-                Filters
-            </Text>
-            <FlatList
-                keyExtractor={(item, index) => index.toString()}
-                data={results}
-                renderItem={
-                    ({item}) => {
-                        return (
-                            <Text>
-                                {item.park_name}
-                            </Text>
-                        )
-                    }
-                }/>
-            
-
-            {/* {isLoading ? <ActivityIndicator/>: (
                 <FlatList
-                keyExtractor={(item, index) => index.toString()}
-                data={parks}
-                renderItem={
-                    ({item}) => {
-                        return (
-                            <Text>
-                                {item.park_name}
-                            </Text>
-                        )
-                    }
-                }/>
-            )} */}
-        </View>
+                data={FILTERS}
+                keyExtractor={(item, index) => item + index}
+                renderItem={({item}) => <FilterItem title={item}/>}
+                renderSectionHeader={({ section: { title } }) => (
+                    <Text style={styles.header}>{title}</Text>
+                )}
+                ListHeaderComponent={
+                    <Text style={styles.header}>
+                        FILTERS
+                    </Text>
+                }
+                ListFooterComponent={ListFooterComponent}
+                />
+                {/* <FlatList
+                    keyExtractor={(item, index) => index.toString()}
+                    data={results}
+                    renderItem={
+                        ({item}) => {
+                            return (
+                                <Text>
+                                    {item.park_name}
+                                </Text>
+                            )
+                        }
+                    }/> */}
+                
+
+                {/* {isLoading ? <ActivityIndicator/>: (
+                    <FlatList
+                    keyExtractor={(item, index) => index.toString()}
+                    data={parks}
+                    renderItem={
+                        ({item}) => {
+                            return (
+                                <Text>
+                                    {item.park_name}
+                                </Text>
+                            )
+                        }
+                    }/>
+                )} */}
+    </View>
     )
 }
 
 const styles = StyleSheet.create({
     title: {
-        fontSize:20
+        fontSize:24
     },
-    btn: {
-
+    item: {
+        backgroundColor: "#f9c2ff",
+        padding: 20,
+        marginVertical: 8
     },
-    btnActive: {
-
-    }
+    header: {
+        fontSize: 32,
+        backgroundColor: "#fff",
+        position: "relative",
+    },
 });

@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { NavigationContainer } from '@react-navigation/native';
 import SearchFilterScreen from './screens/SearchFilterScreen'
+import SearchResults from './screens/SearchResults'
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -14,7 +15,7 @@ function SearchStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Filters' component={SearchFilterScreen} />
-      {/* <Stack.Screen name='Results' component={} /> */}
+      {<Stack.Screen name='Results' component={SearchResults} />}
     </Stack.Navigator>
   )
 }

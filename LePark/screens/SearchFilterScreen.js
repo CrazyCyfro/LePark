@@ -141,7 +141,7 @@ export default function SearchFilterScreen({ navigation }) {
     const saveResults = async () => {
         try {
             await AsyncStorage.setItem('SearchResults', JSON.stringify(results))
-            // navigation.navigate('Results')
+            navigation.navigate('Results')
         } catch (error) {
             console.log(error);
         }

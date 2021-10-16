@@ -17,6 +17,7 @@ import { CheckBox,
     FAB,
     SearchBar } from 'react-native-elements'
 import * as Location from 'expo-location'
+import * as geolib from 'geolib'
 
 const API_URL = 'https://mocki.io/v1/00136ced-5611-4a25-aeef-5c7706a7f35b'
 // const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
@@ -47,7 +48,7 @@ export default function SearchFilterScreen({ navigation }) {
             "Shower",
             "Picnic",
             "Cycling",
-            "Wheelchair-Aaccess"]
+            "Wheelchair-Access"]
     const REGIONS = ["Ang Mo Kio",
             "Bedok",
             "Bishan",
@@ -89,7 +90,7 @@ export default function SearchFilterScreen({ navigation }) {
     const [selected, setSelected] = useState([]);
     const [regions, setRegions] = useState([]);
     const [query, setQuery] = useState("");
-    const [location, setLocation] = useState(null);
+    const [userLocation, setUserLocation] = useState(null);
 
     const getParks = async () => {
         try {
@@ -111,21 +112,45 @@ export default function SearchFilterScreen({ navigation }) {
               return;
             }
       
-            let location = await Location.getCurrentPositionAsync({});
-            setLocation(location);
-            // console.log(JSON.stringify(location))
+            try {
+                let location = await Location.getCurrentPositionAsync({});
+                setUserLocation(location);
+            } catch (error) {
+                console.log(error)
+            }
+            
         })();
     }, []);
 
+    // useEffect(() => {
+    //     console.log(userLocation.coords.longitude)
+    // })
+
     const filterParks = async () => {
         var matchedParks = [...parks];
+
+        for (var i = 0; i < parks.length; i++) {
+            matchedParks[i].distance = geolib.getDistance(
+                {lat: matchedParks[i].x_coord, lon: matchedParks[i].y_coord},
+                {lat: userLocation.coords.latitude, lon: userLocation.coords.longitude}
+            )
+        }
 
         if (selected.length > 0) {
             for (var i = 0; i < parks.length; i++) {
                 const matchedFilters = parks[i].facilities.filter(value => selected.includes(value));
                 matchedParks[i].matches = matchedFilters.length;
             }
-            matchedParks.sort((a, b) => b.matches - a.matches);
+
+            matchedParks.sort((a, b) => {
+                if (a.matches == b.matches) {
+                    return a.distance - b.distance;
+                }
+                return b.matches - a.matches});
+        } else {
+            matchedParks.sort((a, b) => {
+                return a.distance - b.distance;
+            });
         }
         
         if (query.length > 0) {

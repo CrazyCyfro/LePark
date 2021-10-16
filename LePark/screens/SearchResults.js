@@ -47,7 +47,7 @@ export default function SearchResults({ navigation }) {
                 <Text style={styles.header}>RESULTS</Text>
                 <ScrollView>
                     {results.map(item => (
-                        <View style={styles.item} key={item.key}>
+                        <View style={styles.item} key={item.park_name}>
                             <Text>{item.park_name}</Text>
                             <Text>{item.region}</Text>
                             <Text>{item.facilities}</Text>

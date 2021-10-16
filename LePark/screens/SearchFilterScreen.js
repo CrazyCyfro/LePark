@@ -142,6 +142,8 @@ export default function SearchFilterScreen({ navigation }) {
                 matchedParks[i].matches = matchedFilters.length;
             }
 
+            matchedParks = matchedParks.filter(park => park.matches > 0)
+
             matchedParks.sort((a, b) => {
                 if (a.matches == b.matches) {
                     return a.distance - b.distance;

@@ -1,0 +1,2178 @@
+[
+    {
+        "park_name": "Admiralty Park",
+        "x_coord": 1.444227878,
+        "y_coord": 103.7828303,
+        "facilities": [
+            "Event Space",
+            "Shelter",
+            "Toilet",
+            "Playground",
+            "Carpark",
+            "Water Body",
+            "F&B",
+            "Fitness Area"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Admiralty West Park Connector",
+        "x_coord": 1.444777689,
+        "y_coord": 103.7935311,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Aida Park",
+        "x_coord": 1.3195571,
+        "y_coord": 103.9278243,
+        "facilities": [
+            "Playground"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Alexandra Canal Linear Park",
+        "x_coord": 1.295117651,
+        "y_coord": 103.8093996,
+        "facilities": [
+            "Access Point",
+            "Shelter",
+            "Playground",
+            "Bus",
+            "Fitness Area"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Alexandra Garden Trail",
+        "x_coord": 1.277437582,
+        "y_coord": 103.8025378,
+        "facilities": [
+            "Bus",
+            "Shelter",
+            "Access Point"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Alexandra Park Connector",
+        "x_coord": 1.291977766,
+        "y_coord": 103.8202065,
+        "facilities": [
+            "Bus",
+            "Access Point",
+            "Fitness Area",
+            "Shelter"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Aljunied Park",
+        "x_coord": 1.329510798,
+        "y_coord": 103.8800336,
+        "facilities": [
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Aljunied"
+    },
+    {
+        "park_name": "Ang Mo Kio Ave 5 Park Connector",
+        "x_coord": 1.377228217,
+        "y_coord": 103.8596687,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Ang Mo Kio Park Connector",
+        "x_coord": 1.367638281,
+        "y_coord": 103.8440962,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Ang Mo Kio Town Garden East",
+        "x_coord": 1.371192568,
+        "y_coord": 103.8505244,
+        "facilities": [
+            "Shelter",
+            "Carpark",
+            "Playground",
+            "Foot Relax",
+            "Fitness Area",
+            "Event Space"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Ang Mo Kio Town Garden West",
+        "x_coord": 1.37387893,
+        "y_coord": 103.8437745,
+        "facilities": [
+            "Event Space",
+            "Shelter",
+            "Playground",
+            "F&B",
+            "Carpark",
+            "Water Body",
+            "Fitness Area"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Aroozoo Ave Playground",
+        "x_coord": 1.355338067,
+        "y_coord": 103.886177,
+        "facilities": [
+            "Playground",
+            "Fitness Area",
+            "Foot Relax"
+        ],
+        "region": "Hougang"
+    },
+    {
+        "park_name": "Arthur Park",
+        "x_coord": 1.303678517,
+        "y_coord": 103.8881874,
+        "facilities": [
+            "Playground",
+            "Foot Relax"
+        ],
+        "region": "Marine Parade"
+    },
+    {
+        "park_name": "Balam Park Connector",
+        "x_coord": 1.33216401,
+        "y_coord": 103.886299,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Geylang"
+    },
+    {
+        "park_name": "Bangsawan Park",
+        "x_coord": 1.321314516,
+        "y_coord": 103.9237543,
+        "facilities": [
+            "Playground",
+            "Fitness Area"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Banyan Villas Playground",
+        "x_coord": 1.38729102,
+        "y_coord": 103.8388832,
+        "facilities": [
+            "Event Space",
+            "Playground"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Bedok Park Connector",
+        "x_coord": 1.333486481,
+        "y_coord": 103.9469866,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Bedok Reservoir Park",
+        "x_coord": 1.341796207,
+        "y_coord": 103.927071,
+        "facilities": [
+            "Shower",
+            "Carpark",
+            "Toilet",
+            "Shelter",
+            "Event Space",
+            "Fitness Area",
+            "Playground",
+            "Water Point",
+            "Picnic",
+            "F&B"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Bedok Town Park",
+        "x_coord": 1.33509461,
+        "y_coord": 103.9242051,
+        "facilities": [
+            "Toilet",
+            "Event Space",
+            "Shelter"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Bishan-Ang Mo Kio Park (Pond Gardens)",
+        "x_coord": 1.365451953,
+        "y_coord": 103.8360364,
+        "facilities": [
+            "Carpark",
+            "Shelter",
+            "Water Body",
+            "Fitness Area",
+            "Event Space",
+            "F&B",
+            "Playground",
+            "Toilet"
+        ],
+        "region": "Bishan"
+    },
+    {
+        "park_name": "Bishan-Ang Mo Kio Park (River Plains)",
+        "x_coord": 1.361356254,
+        "y_coord": 103.847678,
+        "facilities": [
+            "Access Point",
+            "F&B",
+            "Toilet",
+            "Dog-Area",
+            "Fitness Area",
+            "Water Body",
+            "Shelter",
+            "Carpark",
+            "Playground",
+            "Event Space",
+            "Foot Relax"
+        ],
+        "region": "Bishan"
+    },
+    {
+        "park_name": "Bougainvillea Park",
+        "x_coord": 1.326768113,
+        "y_coord": 103.8076493,
+        "facilities": [
+            "Toilet",
+            "Foot Relax",
+            "Playground",
+            "Shelter",
+            "Carpark"
+        ],
+        "region": "Bukit Timah"
+    },
+    {
+        "park_name": "Buangkok Park Connector",
+        "x_coord": 1.3792908,
+        "y_coord": 103.8819028,
+        "facilities": [
+            "Bicycle Rental Shop",
+            "Access Point"
+        ],
+        "region": "Sengkang"
+    },
+    {
+        "park_name": "Bukit Batok East Park Connector",
+        "x_coord": 1.351365889,
+        "y_coord": 103.7569547,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Bukit Batok Nature Park",
+        "x_coord": 1.349050706,
+        "y_coord": 103.7635783,
+        "facilities": [
+            "Access Point",
+            "Carpark",
+            "Shelter",
+            "Event Space",
+            "Playground",
+            "Toilet",
+            "Fitness Area"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Bukit Batok Park Connector",
+        "x_coord": 1.348727749,
+        "y_coord": 103.7480493,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Bukit Batok Town Park",
+        "x_coord": 1.355719152,
+        "y_coord": 103.7537042,
+        "facilities": [
+            "Shelter"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Bukit Batok West Park Connector",
+        "x_coord": 1.358077556,
+        "y_coord": 103.7492782,
+        "facilities": [
+            "Bicycle Rental Shop",
+            "Access Point"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Bukit Panjang Park Connector",
+        "x_coord": 1.386763643,
+        "y_coord": 103.770154,
+        "facilities": [
+            "Access Point",
+            "Water Point"
+        ],
+        "region": "Bukit Panjang"
+    },
+    {
+        "park_name": "Bukit Timah",
+        "x_coord": 1.354326819,
+        "y_coord": 103.7769712,
+        "facilities": [
+            "Shelter",
+            "Carpark"
+        ],
+        "region": "Bukit Timah"
+    },
+    {
+        "park_name": "Bukit Timah Park Connector",
+        "x_coord": 1.347395718,
+        "y_coord": 103.7657745,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Bukit Timah"
+    },
+    {
+        "park_name": "Bunga Rampai Park",
+        "x_coord": 1.340489334,
+        "y_coord": 103.8841928,
+        "facilities": [
+            "Playground",
+            "Shelter"
+        ],
+        "region": "Toa Payoh"
+    },
+    {
+        "park_name": "Burgundy Cresent Playground",
+        "x_coord": 1.339834057,
+        "y_coord": 103.7610152,
+        "facilities": [
+            "Playground",
+            "Fitness Area",
+            "Shelter"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Canberra Park Connector",
+        "x_coord": 1.44811447,
+        "y_coord": 103.8176532,
+        "facilities": [
+            "Access Point",
+            "Fitness Area"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Canberra-Sembawang Park Connector",
+        "x_coord": 1.453548016,
+        "y_coord": 103.832753,
+        "facilities": [
+            "Access Point",
+            "F&B"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Central Catchment Park Connector",
+        "x_coord": 1.410602966,
+        "y_coord": 103.7782499,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Changi Beach Park",
+        "x_coord": 1.385570722,
+        "y_coord": 103.9973464,
+        "facilities": [
+            "F&B",
+            "Shelter",
+            "Bbq Pit",
+            "Toilet",
+            "Water Point",
+            "Carpark",
+            "Playground",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Changi"
+    },
+    {
+        "park_name": "Changi Point Park Connector",
+        "x_coord": 1.39055377,
+        "y_coord": 103.9869655,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Changi"
+    },
+    {
+        "park_name": "Chestnut Nature Park",
+        "x_coord": 1.373459341,
+        "y_coord": 103.7798382,
+        "facilities": [
+            "Shelter",
+            "Carpark",
+            "Cycling",
+            "Toilet",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Choa Chu Kang North Park Connector",
+        "x_coord": 1.391706412,
+        "y_coord": 103.7465204,
+        "facilities": [
+            "Fitness Area",
+            "Access Point",
+            "Toilet"
+        ],
+        "region": "Choa Chu Kang"
+    },
+    {
+        "park_name": "Choa Chu Kang Park Connector",
+        "x_coord": 1.363870641,
+        "y_coord": 103.7513016,
+        "facilities": [
+            "Access Point",
+            "Toilet"
+        ],
+        "region": "Choa Chu Kang"
+    },
+    {
+        "park_name": "Choa Chu Kang Park",
+        "x_coord": 1.387380484,
+        "y_coord": 103.7471392,
+        "facilities": [
+            "Shelter",
+            "Playground",
+            "Fitness Area",
+            "Event Space",
+            "Toilet",
+            "Carpark",
+            "F&B",
+            "Skateboard",
+            "Water Point",
+            "Access Point",
+            "Baby"
+        ],
+        "region": "Choa Chu Kang"
+    },
+    {
+        "park_name": "Clementi Woods Park",
+        "x_coord": 1.300044758,
+        "y_coord": 103.7675722,
+        "facilities": [
+            "Access Point",
+            "Shelter",
+            "Dog-Area",
+            "Event Space",
+            "Carpark",
+            "Fitness Area",
+            "F&B"
+        ],
+        "region": "Clementi"
+    },
+    {
+        "park_name": "Clover Way Playground",
+        "x_coord": 1.348478987,
+        "y_coord": 103.848825,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Bishan"
+    },
+    {
+        "park_name": "Coastal Park Connector",
+        "x_coord": 1.369675022,
+        "y_coord": 104.0046924,
+        "facilities": [
+            "Access Point",
+            "Dog-Area"
+        ],
+        "region": "Changi"
+    },
+    {
+        "park_name": "Coney Island Park",
+        "x_coord": 1.409139558,
+        "y_coord": 103.9221977,
+        "facilities": [
+            "Shelter",
+            "Playground",
+            "Toilet",
+            "Dog-Area"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Connaught Drive",
+        "x_coord": 1.289594996,
+        "y_coord": 103.8526988,
+        "facilities": [
+            "Event Space"
+        ],
+        "region": "Downtown Core"
+    },
+    {
+        "park_name": "Countryside Playground",
+        "x_coord": 1.389865381,
+        "y_coord": 103.8388044,
+        "facilities": [
+            "Shelter",
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Dairy Farm Nature Park",
+        "x_coord": 1.361594624,
+        "y_coord": 103.7744263,
+        "facilities": [
+            "Toilet",
+            "Event Space",
+            "Shelter",
+            "Carpark"
+        ],
+        "region": "Bukit Panjang"
+    },
+    {
+        "park_name": "Dhoby Ghaut Green",
+        "x_coord": 1.298373391,
+        "y_coord": 103.8457729,
+        "facilities": [
+            "Event Space"
+        ],
+        "region": "Fort Canning"
+    },
+    {
+        "park_name": "East Coast Park Area A",
+        "x_coord": 1.295020713,
+        "y_coord": 103.884316,
+        "facilities": [
+            "Carpark",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Marine Parade"
+    },
+    {
+        "park_name": "East Coast Park Area B",
+        "x_coord": 1.296214471,
+        "y_coord": 103.8980458,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "Carpark",
+            "Bbq Pit",
+            "Fitness Area",
+            "F&B"
+        ],
+        "region": "Marine Parade"
+    },
+    {
+        "park_name": "East Coast Park Area C",
+        "x_coord": 1.300382247,
+        "y_coord": 103.912211,
+        "facilities": [
+            "Carpark",
+            "F&B",
+            "Bbq Pit",
+            "Lookout Point",
+            "Shelter",
+            "Beach Volley",
+            "Playground",
+            "Toilet"
+        ],
+        "region": "Marine Parade"
+    },
+    {
+        "park_name": "East Coast Park Area D",
+        "x_coord": 1.303807098,
+        "y_coord": 103.9242174,
+        "facilities": [
+            "Bbq Pit",
+            "Shelter",
+            "Carpark",
+            "Toilet",
+            "Campsite"
+        ],
+        "region": "Marine Parade"
+    },
+    {
+        "park_name": "East Coast Park Area E",
+        "x_coord": 1.306706169,
+        "y_coord": 103.9353949,
+        "facilities": [
+            "Carpark",
+            "Shelter",
+            "Water Point",
+            "F&B",
+            "Toilet",
+            "Event Space",
+            "Bbq Pit"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "East Coast Park Area F",
+        "x_coord": 1.309617313,
+        "y_coord": 103.943968,
+        "facilities": [
+            "Shelter",
+            "Bbq Pit",
+            "Carpark",
+            "Skateboard",
+            "Event Space",
+            "Toilet"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "East Coast Park Area G",
+        "x_coord": 1.313511032,
+        "y_coord": 103.9594674,
+        "facilities": [
+            "Bbq Pit",
+            "Carpark",
+            "Shelter",
+            "Bicycle Rental Shop",
+            "Campsite",
+            "Toilet"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "East Coast Park Area H",
+        "x_coord": 1.318753748,
+        "y_coord": 103.9676876,
+        "facilities": [
+            "Carpark"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "East Coast Terrace Park",
+        "x_coord": 1.310992174,
+        "y_coord": 103.9238116,
+        "facilities": [
+            "Playground",
+            "Shelter",
+            "Fitness Area"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Empress Place",
+        "x_coord": 1.28797305,
+        "y_coord": 103.8519631,
+        "facilities": [
+            "Event Space"
+        ],
+        "region": "Downtown Core"
+    },
+    {
+        "park_name": "Esplanade Park",
+        "x_coord": 1.289524996,
+        "y_coord": 103.8538293,
+        "facilities": [
+            "Picnic",
+            "Event Space"
+        ],
+        "region": "Downtown Core"
+    },
+    {
+        "park_name": "Florissa Park Playground",
+        "x_coord": 1.38699376,
+        "y_coord": 103.8351205,
+        "facilities": [
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Fort Canning Park",
+        "x_coord": 1.29414919,
+        "y_coord": 103.8471203,
+        "facilities": [
+            "Carpark",
+            "Shelter",
+            "Event Space",
+            "Toilet",
+            "F&B",
+            "Fitness Area"
+        ],
+        "region": "Fort Canning"
+    },
+    {
+        "park_name": "Fudu Walk Playground",
+        "x_coord": 1.389811019,
+        "y_coord": 103.8372553,
+        "facilities": [
+            "Playground",
+            "Fitness Area"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Gentle Dr Playground",
+        "x_coord": 1.320345501,
+        "y_coord": 103.8407159,
+        "facilities": [
+            "Playground",
+            "Fitness Area"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "Gerald Dr Park Connector",
+        "x_coord": 1.379153085,
+        "y_coord": 103.8763973,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Serangoon"
+    },
+    {
+        "park_name": "Geylang East Park",
+        "x_coord": 1.321908174,
+        "y_coord": 103.8875988,
+        "facilities": [
+            "Bbq Pit"
+        ],
+        "region": "Geylang"
+    },
+    {
+        "park_name": "Geylang Park Connector",
+        "x_coord": 1.303192653,
+        "y_coord": 103.8831857,
+        "facilities": [
+            "Shelter",
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Geylang"
+    },
+    {
+        "park_name": "Greenfield Dr Playground",
+        "x_coord": 1.314183316,
+        "y_coord": 103.9182087,
+        "facilities": [
+            "Bicycle Rental Shop",
+            "Playground",
+            "Shelter",
+            "Fitness Area",
+            "Picnic"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Harvey Crescent Playground",
+        "x_coord": 1.340559984,
+        "y_coord": 103.9552397,
+        "facilities": [
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Henderson Park Connector",
+        "x_coord": 1.290600031,
+        "y_coord": 103.8232772,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Bukit Merah"
+    },
+    {
+        "park_name": "Hillview Park Connector",
+        "x_coord": 1.358688028,
+        "y_coord": 103.7643597,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Bukit Batok"
+    },
+    {
+        "park_name": "Hindhede Nature Park",
+        "x_coord": 1.34853273,
+        "y_coord": 103.7759307,
+        "facilities": [
+            "Access Point",
+            "Toilet",
+            "Carpark",
+            "Playground",
+            "Shelter",
+            "Fitness Area",
+            "Foot Relax"
+        ],
+        "region": "Bukit Panjang"
+    },
+    {
+        "park_name": "Holland Village Park",
+        "x_coord": 1.311754658,
+        "y_coord": 103.7955557,
+        "facilities": [
+            "F&B"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Hong Lim Park",
+        "x_coord": 1.286207909,
+        "y_coord": 103.8471256,
+        "facilities": [
+            "Toilet",
+            "Carpark"
+        ],
+        "region": "Singapore River"
+    },
+    {
+        "park_name": "Hooper Rd Playground",
+        "x_coord": 1.312576837,
+        "y_coord": 103.843307,
+        "facilities": [
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "Hortpark",
+        "x_coord": 1.278998546,
+        "y_coord": 103.7998852,
+        "facilities": [
+            "Shelter",
+            "Event Space",
+            "Playground",
+            "Baby",
+            "Toilet",
+            "Carpark",
+            "Water Body",
+            "F&B"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Hougang Ave 3 Park Connector",
+        "x_coord": 1.354165207,
+        "y_coord": 103.8910437,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Hougang"
+    },
+    {
+        "park_name": "Istana Park",
+        "x_coord": 1.299324019,
+        "y_coord": 103.8438382,
+        "facilities": [
+            "Water Body",
+            "Shelter",
+            "F&B"
+        ],
+        "region": "Newton"
+    },
+    {
+        "park_name": "Jalan Mas Puteh Playground",
+        "x_coord": 1.308379991,
+        "y_coord": 103.762023,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Clementi"
+    },
+    {
+        "park_name": "Janggus Garden",
+        "x_coord": 1.457520496,
+        "y_coord": 103.8369752,
+        "facilities": [
+            "Fitness Area"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Chinese Garden",
+        "x_coord": 1.338199611,
+        "y_coord": 103.7296579,
+        "facilities": [
+            "Toilet",
+            "Shelter",
+            "Event Space"
+        ],
+        "region": "Jurong East"
+    },
+    {
+        "park_name": "Jln Angin Laut Playground",
+        "x_coord": 1.337180278,
+        "y_coord": 103.9562363,
+        "facilities": [
+            "Playground"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Jln Buloh Perindu Playground",
+        "x_coord": 1.308483873,
+        "y_coord": 103.9193843,
+        "facilities": [
+            "Picnic",
+            "Playground",
+            "Shelter",
+            "Fitness Area"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Jln Pelatok Playground",
+        "x_coord": 1.346128755,
+        "y_coord": 103.9602814,
+        "facilities": [
+            "Fitness Area",
+            "Playground",
+            "Shelter"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Jln Pelikat Park Connector",
+        "x_coord": 1.353702926,
+        "y_coord": 103.8832533,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Hougang"
+    },
+    {
+        "park_name": "Jubilee Park",
+        "x_coord": 1.293954548,
+        "y_coord": 103.8445561,
+        "facilities": [
+            "Carpark"
+        ],
+        "region": "Fort Canning"
+    },
+    {
+        "park_name": "Jurong Central Park",
+        "x_coord": 1.338179091,
+        "y_coord": 103.7078319,
+        "facilities": [
+            "Playground",
+            "F&B",
+            "Toilet",
+            "Event Space",
+            "Shelter",
+            "Fitness Area",
+            "Water Body",
+            "Carpark",
+            "Lookout Point"
+        ],
+        "region": "Jurong West"
+    },
+    {
+        "park_name": "Jurong Lake Gardens West",
+        "x_coord": 1.337998308,
+        "y_coord": 103.726513,
+        "facilities": [
+            "Carpark"
+        ],
+        "region": "Jurong East"
+    },
+    {
+        "park_name": "Jurong Park Connector",
+        "x_coord": 1.350053929,
+        "y_coord": 103.7278109,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Jurong East"
+    },
+    {
+        "park_name": "Kallang Park Connector",
+        "x_coord": 1.31440649,
+        "y_coord": 103.8695571,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Kallang"
+    },
+    {
+        "park_name": "Kallang Riverside Park",
+        "x_coord": 1.30636926,
+        "y_coord": 103.8683458,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "Carpark",
+            "Event Space",
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Kallang"
+    },
+    {
+        "park_name": "Kandis Garden",
+        "x_coord": 1.456144762,
+        "y_coord": 103.8357463,
+        "facilities": [
+            "Playground",
+            "Fitness Area"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Katong Park",
+        "x_coord": 1.296625332,
+        "y_coord": 103.886502,
+        "facilities": [
+            "Dog-Area",
+            "Playground",
+            "Toilet"
+        ],
+        "region": "Marine Parade"
+    },
+    {
+        "park_name": "Kemuning Park",
+        "x_coord": 1.440949013,
+        "y_coord": 103.824778,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Kent Ridge Park",
+        "x_coord": 1.283242961,
+        "y_coord": 103.7908865,
+        "facilities": [
+            "Toilet",
+            "Playground",
+            "Shelter",
+            "Carpark",
+            "Fitness Area"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Khatib Bongsu Park Connector",
+        "x_coord": 1.423203778,
+        "y_coord": 103.8375993,
+        "facilities": [
+            "Access Point",
+            "Water Point",
+            "Bus",
+            "Fitness Area"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Kranji Marshes",
+        "x_coord": 1.416841807,
+        "y_coord": 103.7269029,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "Lookout Point",
+            "Event Space"
+        ],
+        "region": "Lim Chu Kang"
+    },
+    {
+        "park_name": "Kranji Reservoir Park",
+        "x_coord": 1.438295753,
+        "y_coord": 103.7399842,
+        "facilities": [
+            "Shelter",
+            "Carpark",
+            "Water Body"
+        ],
+        "region": "Sungei Kadut"
+    },
+    {
+        "park_name": "Labrador Park",
+        "x_coord": 1.265490871,
+        "y_coord": 103.8031158,
+        "facilities": [
+            "Shelter",
+            "Carpark",
+            "Playground",
+            "Fitness Area",
+            "Bbq Pit",
+            "Event Space",
+            "Toilet",
+            "F&B",
+            "Lookout Point",
+            "Bus",
+            "Water Body"
+        ],
+        "region": "Bukit Merah"
+    },
+    {
+        "park_name": "Lakeside Grove Fitness Corner",
+        "x_coord": 1.339955022,
+        "y_coord": 103.7173844,
+        "facilities": [
+            "Fitness Area"
+        ],
+        "region": "Jurong West"
+    },
+    {
+        "park_name": "Lentor Grove Playground",
+        "x_coord": 1.386410484,
+        "y_coord": 103.8383031,
+        "facilities": [
+            "Shelter",
+            "Playground",
+            "Fitness Area"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Lentor Rd Playground",
+        "x_coord": 1.388285291,
+        "y_coord": 103.8375844,
+        "facilities": [
+            "Playground"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Lentor Street Playground",
+        "x_coord": 1.390021602,
+        "y_coord": 103.834248,
+        "facilities": [
+            "Fitness Area",
+            "Playground"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Lentor Walk Playground",
+        "x_coord": 1.388589852,
+        "y_coord": 103.8383804,
+        "facilities": [
+            "Playground",
+            "Fitness Area"
+        ],
+        "region": "Ang Mo Kio"
+    },
+    {
+        "park_name": "Lower Peirce Reservoir Park & Boardwalk",
+        "x_coord": 1.370695058,
+        "y_coord": 103.8266275,
+        "facilities": [
+            "Carpark",
+            "Shelter",
+            "Toilet"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Lower Seletar Reservoir Park",
+        "x_coord": 1.412425643,
+        "y_coord": 103.8412696,
+        "facilities": [
+            "Lookout Point",
+            "Carpark",
+            "Shelter",
+            "Event Space",
+            "Fitness Area",
+            "Toilet"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Loyang Park Connector",
+        "x_coord": 1.386997565,
+        "y_coord": 103.9801316,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Changi"
+    },
+    {
+        "park_name": "Lucky Gardens Playground",
+        "x_coord": 1.319227,
+        "y_coord": 103.941414,
+        "facilities": [
+            "Playground"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Macritchie Nature Trail",
+        "x_coord": 1.352937632,
+        "y_coord": 103.8155098,
+        "facilities": [
+            "Shelter",
+            "Lookout Point",
+            "Toilet",
+            "Fitness Area"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Macritchie Reservoir Park",
+        "x_coord": 1.342233375,
+        "y_coord": 103.8333151,
+        "facilities": [
+            "Event Space",
+            "Fitness Area",
+            "F&B",
+            "Toilet",
+            "Carpark"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Malcolm Park",
+        "x_coord": 1.322715765,
+        "y_coord": 103.8266782,
+        "facilities": [
+            "Fitness Area"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "Mandai Park Connector",
+        "x_coord": 1.41132373,
+        "y_coord": 103.810254,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Mandai"
+    },
+    {
+        "park_name": "Marsiling Park",
+        "x_coord": 1.438297627,
+        "y_coord": 103.7701145,
+        "facilities": [
+            "Access Point",
+            "Lookout Point",
+            "Shelter",
+            "Playground",
+            "Water Body",
+            "Carpark",
+            "Toilet",
+            "Event Space"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Marsiling Park Connector",
+        "x_coord": 1.444169174,
+        "y_coord": 103.7713972,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Mera Terrace Playground",
+        "x_coord": 1.347333838,
+        "y_coord": 103.9634753,
+        "facilities": [
+            "Shelter",
+            "Playground"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Meragi Rd Playground",
+        "x_coord": 1.344450975,
+        "y_coord": 103.9602888,
+        "facilities": [
+            "Foot Relax",
+            "Shelter"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Mount Faber Park",
+        "x_coord": 1.271250031,
+        "y_coord": 103.8191078,
+        "facilities": [
+            "Access Point",
+            "Event Space",
+            "Carpark",
+            "Shelter",
+            "Lookout Point",
+            "F&B",
+            "Toilet"
+        ],
+        "region": "Bukit Merah"
+    },
+    {
+        "park_name": "Novena Park",
+        "x_coord": 1.322196771,
+        "y_coord": 103.8427749,
+        "facilities": [
+            "Shelter",
+            "Playground"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "Novena Rise Park",
+        "x_coord": 1.324852387,
+        "y_coord": 103.8429721,
+        "facilities": [
+            "Playground"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "One-North Park",
+        "x_coord": 1.30451433,
+        "y_coord": 103.7902789,
+        "facilities": [
+            "Bus",
+            "Event Space",
+            "Playground",
+            "Shelter"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Pandan Gardens Park Connector",
+        "x_coord": 1.319598533,
+        "y_coord": 103.7503976,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Jurong East"
+    },
+    {
+        "park_name": "Pang Sua Park Connector",
+        "x_coord": 1.387824363,
+        "y_coord": 103.7541463,
+        "facilities": [
+            "Water Point",
+            "Access Point",
+            "Event Space",
+            "Playground",
+            "Toilet"
+        ],
+        "region": "Bukit Panjang"
+    },
+    {
+        "park_name": "Pasir Ris Park Connector",
+        "x_coord": 1.37236983,
+        "y_coord": 103.9597683,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Pasir Ris"
+    },
+    {
+        "park_name": "Pasir Ris Park",
+        "x_coord": 1.382780519,
+        "y_coord": 103.9496146,
+        "facilities": [
+            "Fitness Area",
+            "Shelter",
+            "Toilet",
+            "Bbq Pit",
+            "Event Space",
+            "Skateboard",
+            "Water Body",
+            "F&B",
+            "Carpark",
+            "Playground",
+            "Campsite"
+        ],
+        "region": "Pasir Ris"
+    },
+    {
+        "park_name": "Pasir Ris Town Park",
+        "x_coord": 1.371475361,
+        "y_coord": 103.9525718,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop",
+            "Fitness Area",
+            "Toilet",
+            "Carpark",
+            "Water Body",
+            "Shelter"
+        ],
+        "region": "Pasir Ris"
+    },
+    {
+        "park_name": "Paya Lebar Park Connector",
+        "x_coord": 1.336531893,
+        "y_coord": 103.8881742,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Geylang"
+    },
+    {
+        "park_name": "Paya Lebar Road Park",
+        "x_coord": 1.332738547,
+        "y_coord": 103.8888515,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Geylang"
+    },
+    {
+        "park_name": "Pearl's Hill City Park",
+        "x_coord": 1.284122875,
+        "y_coord": 103.8398236,
+        "facilities": [
+            "Water Body",
+            "Shelter",
+            "Carpark",
+            "Fitness Area"
+        ],
+        "region": "Outram"
+    },
+    {
+        "park_name": "Pebble Garden",
+        "x_coord": 1.450669168,
+        "y_coord": 103.829526,
+        "facilities": [
+            "Foot Relax"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Pelton Canal Park Connector",
+        "x_coord": 1.32721332,
+        "y_coord": 103.8849453,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Geylang"
+    },
+    {
+        "park_name": "Pulau Ubin",
+        "x_coord": 1.410687478,
+        "y_coord": 103.9860457,
+        "facilities": [
+            "Shelter",
+            "Event Space",
+            "Lookout Point",
+            "Campsite"
+        ],
+        "region": "North Eastern Islands"
+    },
+    {
+        "park_name": "Punggol Park Connector",
+        "x_coord": 1.393110493,
+        "y_coord": 103.8837067,
+        "facilities": [
+            "Access Point",
+            "Fitness Area",
+            "Toilet",
+            "Water Point",
+            "Shelter"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Punggol Park",
+        "x_coord": 1.377179269,
+        "y_coord": 103.898161,
+        "facilities": [
+            "Shelter",
+            "Fitness Area",
+            "Carpark",
+            "Foot Relax",
+            "Playground",
+            "Bicycle Rental Shop",
+            "Event Space",
+            "Water Body",
+            "Toilet",
+            "Woodball",
+            "F&B",
+            "Water Point"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Punggol Promenade Punggol Point Walk",
+        "x_coord": 1.421197862,
+        "y_coord": 103.9108451,
+        "facilities": [
+            "Water Point",
+            "Access Point"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Punggol Promenade Riverside Walk",
+        "x_coord": 1.39583392,
+        "y_coord": 103.9203669,
+        "facilities": [
+            "Access Point",
+            "Water Point"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Punggol Waterway",
+        "x_coord": 1.405889925,
+        "y_coord": 103.9087548,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "Access Point",
+            "Water Point",
+            "Lookout Point"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Punggol Waterway Park",
+        "x_coord": 1.410990149,
+        "y_coord": 103.9039588,
+        "facilities": [
+            "Toilet",
+            "Event Space",
+            "Playground",
+            "Carpark",
+            "Shelter",
+            "Shower",
+            "Lookout Point"
+        ],
+        "region": "Punggol"
+    },
+    {
+        "park_name": "Raffles Place Park",
+        "x_coord": 1.284158594,
+        "y_coord": 103.8514714,
+        "facilities": [
+            "Event Space",
+            "F&B"
+        ],
+        "region": "Downtown Core"
+    },
+    {
+        "park_name": "Sembawang Hot Spring Park",
+        "x_coord": 1.434448265,
+        "y_coord": 103.8227603,
+        "facilities": [
+            "Shelter",
+            "F&B",
+            "Toilet",
+            "Water Point"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Sembawang Park Connector",
+        "x_coord": 1.453808815,
+        "y_coord": 103.8117871,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Sembawang Park",
+        "x_coord": 1.461577187,
+        "y_coord": 103.8366321,
+        "facilities": [
+            "Access Point",
+            "Dog-Area",
+            "Toilet",
+            "F&B",
+            "Carpark",
+            "Event Space"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Sengkang Riverside Park",
+        "x_coord": 1.398654042,
+        "y_coord": 103.8843618,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "F&B",
+            "Water Body",
+            "Carpark"
+        ],
+        "region": "Sengkang"
+    },
+    {
+        "park_name": "Serangoon Park Connector",
+        "x_coord": 1.367679923,
+        "y_coord": 103.8990368,
+        "facilities": [
+            "Access Point",
+            "Fitness Area",
+            "Shelter",
+            "Bicycle Rental Shop",
+            "Dog-Area"
+        ],
+        "region": "Hougang"
+    },
+    {
+        "park_name": "Sungei Api Api Park",
+        "x_coord": 1.378794141,
+        "y_coord": 103.945857,
+        "facilities": [
+            "Playground",
+            "Shelter"
+        ],
+        "region": "Pasir Ris"
+    },
+    {
+        "park_name": "Sungei Serangoon Park",
+        "x_coord": 1.385553024,
+        "y_coord": 103.901961,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Sengkang"
+    },
+    {
+        "park_name": "Shelford Rd Playground",
+        "x_coord": 1.328345804,
+        "y_coord": 103.8105103,
+        "facilities": [
+            "Shelter",
+            "Playground"
+        ],
+        "region": "Bukit Timah"
+    },
+    {
+        "park_name": "Siglap Park Connector",
+        "x_coord": 1.319627772,
+        "y_coord": 103.913163,
+        "facilities": [
+            "Access Point",
+            "Shelter",
+            "Bicycle Rental Shop",
+            "Fitness Area"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Simei Park Connector",
+        "x_coord": 1.341446811,
+        "y_coord": 103.9548164,
+        "facilities": [
+            "Fitness Area",
+            "Access Point"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Simpang Kiri Park Connector",
+        "x_coord": 1.449065173,
+        "y_coord": 103.8351214,
+        "facilities": [
+            "Fitness Area",
+            "Shelter",
+            "Access Point"
+        ],
+        "region": "Sembawang"
+    },
+    {
+        "park_name": "Singapore Botanic Gardens",
+        "x_coord": 1.315746324,
+        "y_coord": 103.8163601,
+        "facilities": [
+            "Carpark",
+            "Toilet",
+            "Playground",
+            "F&B",
+            "Event Space",
+            "Shelter",
+            "Lookout Point",
+            "Water Body",
+            "Water Point",
+            "Wheelchair-Access",
+            "Foot Relax"
+        ],
+        "region": "Tanglin"
+    },
+    {
+        "park_name": "Sisters' Island Marine Park",
+        "x_coord": 1.2171366,
+        "y_coord": 103.8502098,
+        "facilities": [
+            "Shelter"
+        ],
+        "region": "Western Islands"
+    },
+    {
+        "park_name": "Springleaf Nature Park",
+        "x_coord": 1.401220057,
+        "y_coord": 103.8175728,
+        "facilities": [
+            "Toilet",
+            "Carpark",
+            "F&B",
+            "Lookout Point"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Sun Plaza Park",
+        "x_coord": 1.359147921,
+        "y_coord": 103.9434372,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "Beach Volley",
+            "Playground",
+            "Event Space"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Sunbird Circle Playground",
+        "x_coord": 1.339044433,
+        "y_coord": 103.9582086,
+        "facilities": [
+            "Playground",
+            "Shelter",
+            "Fitness Area"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Sungei Buloh Wetland Reserve",
+        "x_coord": 1.446180245,
+        "y_coord": 103.7253376,
+        "facilities": [
+            "Carpark",
+            "Event Space",
+            "Shelter",
+            "Toilet"
+        ],
+        "region": "Lim Chu Kang"
+    },
+    {
+        "park_name": "Tampines Eco Green Park",
+        "x_coord": 1.363947217,
+        "y_coord": 103.9482897,
+        "facilities": [
+            "Toilet",
+            "Shelter",
+            "Lookout Point",
+            "Water Body"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Tampines Park Connector",
+        "x_coord": 1.361502805,
+        "y_coord": 103.9503175,
+        "facilities": [
+            "Fitness Area",
+            "Bicycle Rental Shop",
+            "Shelter"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Tampines-Loyang Park Connector",
+        "x_coord": 1.35608214,
+        "y_coord": 103.9556839,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop"
+        ],
+        "region": "Tampines"
+    },
+    {
+        "park_name": "Tanah Puteh Park",
+        "x_coord": 1.3155218,
+        "y_coord": 103.9314801,
+        "facilities": [
+            "Bicycle Rental Shop",
+            "Fitness Area",
+            "Shelter",
+            "Playground"
+        ],
+        "region": "Bedok"
+    },
+    {
+        "park_name": "Tanjong Rhu Promenade",
+        "x_coord": 1.297776309,
+        "y_coord": 103.8661277,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Kallang"
+    },
+    {
+        "park_name": "Telok Blangah Hill Park",
+        "x_coord": 1.278144286,
+        "y_coord": 103.8122631,
+        "facilities": [
+            "Shelter",
+            "Fitness Area",
+            "F&B",
+            "Carpark",
+            "Playground",
+            "Event Space",
+            "Toilet",
+            "Foot Relax"
+        ],
+        "region": "Bukit Merah"
+    },
+    {
+        "park_name": "The Foothills Fort Canning Park",
+        "x_coord": 1.292115672,
+        "y_coord": 103.8458154,
+        "facilities": [
+            "Toilet",
+            "F&B",
+            "Event Space"
+        ],
+        "region": "Fort Canning"
+    },
+    {
+        "park_name": "Thomson Park",
+        "x_coord": 1.354308545,
+        "y_coord": 103.8343729,
+        "facilities": [
+            "Playground",
+            "Fitness Area",
+            "Shelter"
+        ],
+        "region": "Bishan"
+    },
+    {
+        "park_name": "Tiong Bahru Park",
+        "x_coord": 1.287429733,
+        "y_coord": 103.8246459,
+        "facilities": [
+            "Bus",
+            "Shelter",
+            "Carpark",
+            "Fitness Area",
+            "Playground",
+            "Toilet"
+        ],
+        "region": "Bukit Merah"
+    },
+    {
+        "park_name": "Toa Payoh Town Park",
+        "x_coord": 1.330510329,
+        "y_coord": 103.8477891,
+        "facilities": [
+            "Event Space",
+            "Shelter",
+            "F&B",
+            "Foot Relax",
+            "Water Body",
+            "Toilet",
+            "Lookout Point"
+        ],
+        "region": "Toa Payoh"
+    },
+    {
+        "park_name": "Ulu Pandan Park Connector",
+        "x_coord": 1.332049342,
+        "y_coord": 103.7496487,
+        "facilities": [
+            "Access Point",
+            "Fitness Area",
+            "Toilet",
+            "Water Point",
+            "Bicycle Rental Shop",
+            "Shelter"
+        ],
+        "region": "Clementi"
+    },
+    {
+        "park_name": "University Rd Park",
+        "x_coord": 1.325434589,
+        "y_coord": 103.817769,
+        "facilities": [
+            "Fitness Area",
+            "Shelter"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "Upper Peirce Reservoir Park",
+        "x_coord": 1.37435636,
+        "y_coord": 103.8111115,
+        "facilities": [
+            "Event Space",
+            "Shelter",
+            "Toilet",
+            "Carpark"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Upper Seletar Reservoir Park",
+        "x_coord": 1.400705352,
+        "y_coord": 103.8066635,
+        "facilities": [
+            "Event Space",
+            "Lookout Point",
+            "Shelter",
+            "Carpark",
+            "Toilet"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Villa Verde Park",
+        "x_coord": 1.393720029,
+        "y_coord": 103.75244,
+        "facilities": [
+            "Water Point"
+        ],
+        "region": "Choa Chu Kang"
+    },
+    {
+        "park_name": "War Memorial Park",
+        "x_coord": 1.292865748,
+        "y_coord": 103.854695,
+        "facilities": [
+            "Water Body"
+        ],
+        "region": "Downtown Core"
+    },
+    {
+        "park_name": "Watten Heights Playground",
+        "x_coord": 1.331755995,
+        "y_coord": 103.8084136,
+        "facilities": [
+            "Playground",
+            "Fitness Area",
+            "Shelter"
+        ],
+        "region": "Bukit Timah"
+    },
+    {
+        "park_name": "West Coast Park",
+        "x_coord": 1.294406668,
+        "y_coord": 103.7652047,
+        "facilities": [
+            "Shelter",
+            "Event Space",
+            "Bbq Pit",
+            "Playground",
+            "Water Point",
+            "Carpark",
+            "Lookout Point",
+            "Access Point",
+            "Toilet",
+            "Campsite",
+            "Dog-Area",
+            "F&B"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "West Coast Park Connector",
+        "x_coord": 1.310682644,
+        "y_coord": 103.755612,
+        "facilities": [
+            "Access Point"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "West Coast Place Playground",
+        "x_coord": 1.312086002,
+        "y_coord": 103.758681,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Queenstown"
+    },
+    {
+        "park_name": "Westville Playground",
+        "x_coord": 1.353579044,
+        "y_coord": 103.6993797,
+        "facilities": [
+            "Shelter",
+            "Playground"
+        ],
+        "region": "Jurong West"
+    },
+    {
+        "park_name": "Westwood Park Playground",
+        "x_coord": 1.351735958,
+        "y_coord": 103.7010629,
+        "facilities": [
+            "Playground",
+            "Shelter"
+        ],
+        "region": "Jurong West"
+    },
+    {
+        "park_name": "Whampoa Park Connector",
+        "x_coord": 1.324355221,
+        "y_coord": 103.8585207,
+        "facilities": [
+            "Bicycle Rental Shop",
+            "Access Point",
+            "Shelter",
+            "Lookout Point"
+        ],
+        "region": "Novena"
+    },
+    {
+        "park_name": "Windsor Nature Park",
+        "x_coord": 1.359850786,
+        "y_coord": 103.8269932,
+        "facilities": [
+            "Carpark",
+            "Toilet",
+            "Water Body",
+            "Shelter"
+        ],
+        "region": "Central Water Catchment"
+    },
+    {
+        "park_name": "Woodlands Park Connector",
+        "x_coord": 1.432869513,
+        "y_coord": 103.7794815,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop",
+            "Fitness Area",
+            "Water Point",
+            "Shelter"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Woodlands Town Park East",
+        "x_coord": 1.438503149,
+        "y_coord": 103.7771032,
+        "facilities": [
+            "Bicycle Rental Shop",
+            "Fitness Area"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Woodlands Waterfront Park",
+        "x_coord": 1.45195268,
+        "y_coord": 103.777658,
+        "facilities": [
+            "Shelter",
+            "Toilet",
+            "F&B",
+            "Event Space",
+            "Fitness Area",
+            "Playground",
+            "Lookout Point",
+            "Carpark"
+        ],
+        "region": "Woodlands"
+    },
+    {
+        "park_name": "Yishun Neighbourhood Park",
+        "x_coord": 1.437128753,
+        "y_coord": 103.8356585,
+        "facilities": [
+            "Foot Relax",
+            "Toilet",
+            "Playground",
+            "Fitness Area",
+            "Shelter"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Yishun Park Connector",
+        "x_coord": 1.433546479,
+        "y_coord": 103.8330594,
+        "facilities": [
+            "Access Point",
+            "Bicycle Rental Shop",
+            "Bus"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Yishun Park",
+        "x_coord": 1.424462362,
+        "y_coord": 103.8426239,
+        "facilities": [
+            "Dog-Area",
+            "Playground",
+            "Shelter",
+            "Event Space",
+            "Toilet",
+            "Water Point",
+            "Fitness Area"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Yishun Pond Park",
+        "x_coord": 1.427888986,
+        "y_coord": 103.837915,
+        "facilities": [
+            "Bicycle Rental Shop"
+        ],
+        "region": "Yishun"
+    },
+    {
+        "park_name": "Youth Olympic Park",
+        "x_coord": 1.28905708,
+        "y_coord": 103.8604812,
+        "facilities": [
+            "Toilet"
+        ],
+        "region": "Downtown Core"
+    },
+    {
+        "park_name": "Yunnan Park",
+        "x_coord": 1.337275504,
+        "y_coord": 103.6929895,
+        "facilities": [
+            "Playground"
+        ],
+        "region": "Jurong West"
+    },
+    {
+        "park_name": "Zhenghua Park",
+        "x_coord": 1.380741984,
+        "y_coord": 103.7750138,
+        "facilities": [
+            "Toilet",
+            "Fitness Area",
+            "Shelter",
+            "Playground"
+        ],
+        "region": "Bukit Panjang"
+    }
+]

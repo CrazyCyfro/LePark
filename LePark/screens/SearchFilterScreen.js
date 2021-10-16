@@ -13,54 +13,53 @@ import { createStackNavigator } from '@react-navigation/stack'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { CheckBox } from 'react-native-elements'
+import { CheckBox,
+    FAB,
+    SearchBar } from 'react-native-elements'
 import * as Location from 'expo-location'
 
-const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
+const API_URL = 'https://mocki.io/v1/00136ced-5611-4a25-aeef-5c7706a7f35b'
+// const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
 
 export default function SearchFilterScreen({ navigation }) {
-    const [isLoading, setLoading] = useState(true);
     const [parks, setParks] = useState([]);
-    const [results, setResults] = useState([]);
-    const FILTERS = ["SHELTER",
-            "TOILET",
+    const FILTERS = ["Shelter",
+            "Toilet",
             "F&B",
-            "EVENT SPACE",
-            "FITNESS AREA",
-            "PLAYGROUND",
-            "ACCESS POINT",
-            "CARPARK",
-            "WATER BODY",
-            "BICYCLE RENTAL SHOP",
-            "DOG-AREA",
-            "BEACH VOLLEY",
-            "FOOT RELAX",
-            "WOODBALL",
-            "WATER POINT",
-            "BUS",
-            "LOOKOUT POINT",
-            "BABY",
-            "BBQ PIT",
-            "SKATEBOARD",
-            "CAMPSITE",
-            "SHOWER",
-            "PICNIC",
-            "CYCLING",
-            "WHEELCHAIR-ACCESS"]
-    const LOCATIONS = ["Ang Mo Kio",
+            "Event Space",
+            "Fitness Area",
+            "Playground",
+            "Access Point",
+            "Carpark",
+            "Water Body",
+            "Bicycle Rental Shop",
+            "Dog-Area",
+            "Beach Volley",
+            "Foot Relax",
+            "Woodball",
+            "Water Point",
+            "Bus",
+            "Lookout Point",
+            "Baby",
+            "Bbq Pit",
+            "Skateboard",
+            "Campsite",
+            "Shower",
+            "Picnic",
+            "Cycling",
+            "Wheelchair-Aaccess"]
+    const REGIONS = ["Ang Mo Kio",
             "Bedok",
             "Bishan",
-            "Boon Lay",
             "Bukit Batok",
             "Bukit Merah",
             "Bukit Panjang",
             "Bukit Timah",
             "Central Water Catchment",
             "Changi",
-            "Changi Bay",
             "Choa Chu Kang",
-            "Clementi",
             "Downtown Core",
+            "Fort Canning",
             "Geylang",
             "Hougang",
             "Jurong East",
@@ -68,43 +67,29 @@ export default function SearchFilterScreen({ navigation }) {
             "Kallang",
             "Lim Chu Kang",
             "Mandai",
-            "Marina East",
-            "Marina South",
             "Marine Parade",
-            "Museum",
             "Newton",
-            "North-Eastern Islands",
+            "North Eastern Islands",
             "Novena",
-            "Orchard",
             "Outram",
             "Pasir Ris",
-            "Paya Lebar",
-            "Pioneer",
             "Punggol",
             "Queenstown",
-            "River Valley",
-            "Rochor",
-            "Seletar",
             "Sembawang",
             "Sengkang",
             "Serangoon",
-            "Simpang",
             "Singapore River",
-            "Southern Islands",
-            "Straits View",
             "Sungei Kadut",
             "Tampines",
             "Tanglin",
-            "Tengah",
             "Toa Payoh",
-            "Tuas",
             "Western Islands",
-            "Western Water Catchment",
             "Woodlands",
             "Yishun"]
     const [selected, setSelected] = useState([]);
-    const [locations, setLocations] = useState([]);
-    const [query, setQuery] = useState('');
+    const [regions, setRegions] = useState([]);
+    const [query, setQuery] = useState("");
+    const [location, setLocation] = useState(null);
 
     const getParks = async () => {
         try {
@@ -113,35 +98,50 @@ export default function SearchFilterScreen({ navigation }) {
             setParks(json);
         } catch (error) {
             console.log(error);
-        } finally {
-            setLoading(false);
         }
     }
 
     useEffect(() => {
         getParks();
+
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+              setErrorMsg('Permission to access location was denied');
+              return;
+            }
+      
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+            // console.log(JSON.stringify(location))
+        })();
     }, []);
 
-    const filterParks = () => {
-        let matchedParks = [...parks];
-        for (var i = 0; i < parks.length; i++) {
-            const matchedFilters = parks[i].facilities.filter(value => selected.includes(value));
-            matchedParks[i].matches = matchedFilters.length;
+    const filterParks = async () => {
+        var matchedParks = [...parks];
+
+        if (selected.length > 0) {
+            for (var i = 0; i < parks.length; i++) {
+                const matchedFilters = parks[i].facilities.filter(value => selected.includes(value));
+                matchedParks[i].matches = matchedFilters.length;
+            }
+            matchedParks.sort((a, b) => b.matches - a.matches);
         }
-        matchedParks.sort((a, b) => b.matches - a.matches);
-        setResults(matchedParks);
-        saveResults();
-        // console.log(matchedParks)
-    }
+        
+        if (query.length > 0) {
+            const formattedQuery = query.toLowerCase();
+            matchedParks = matchedParks.filter(park => 
+                park.park_name.toLowerCase().includes(formattedQuery))
+        }
 
-    useEffect(() => {
-        filterParks();
-    }, [selected])
+        if (regions.length > 0) {
+            matchedParks = matchedParks.filter(park => 
+            regions.includes(park.region))
+        }
 
-    const saveResults = async () => {
         try {
-            await AsyncStorage.setItem('SearchResults', JSON.stringify(results))
-            navigation.navigate('Results')
+            await AsyncStorage.setItem('SearchResults', JSON.stringify(matchedParks))
+            // navigation.navigate('Results');
         } catch (error) {
             console.log(error);
         }
@@ -165,6 +165,7 @@ export default function SearchFilterScreen({ navigation }) {
                 tmp.push(title);
             }
             setSelected(tmp);
+            
         }}
         />
     );
@@ -173,9 +174,9 @@ export default function SearchFilterScreen({ navigation }) {
         <CheckBox
         style={styles.item}
         title={title}
-        checked={locations.includes(title)}
+        checked={regions.includes(title)}
         onPress={() => {
-            let tmp = [...locations];
+            let tmp = [...regions];
             
 
             if (tmp.includes(title)) {
@@ -187,7 +188,7 @@ export default function SearchFilterScreen({ navigation }) {
             } else {
                 tmp.push(title);
             }
-            setLocations(tmp);
+            setRegions(tmp);
         }}
         />
     )
@@ -195,7 +196,7 @@ export default function SearchFilterScreen({ navigation }) {
     const ListFooterComponent = (
         <>
             <FlatList
-            data={LOCATIONS}
+            data={REGIONS}
             keyExtractor={(item, index) => item + index}
             renderItem={({item}) => <LocationItem title={item}/>}
             renderSectionHeader={({ section: { title } }) => (
@@ -212,49 +213,36 @@ export default function SearchFilterScreen({ navigation }) {
 
     return (
         <View>
-                <FlatList
-                data={FILTERS}
-                keyExtractor={(item, index) => item + index}
-                renderItem={({item}) => <FilterItem title={item}/>}
-                renderSectionHeader={({ section: { title } }) => (
-                    <Text style={styles.header}>{title}</Text>
-                )}
-                ListHeaderComponent={
-                    <Text style={styles.header}>
-                        FILTERS
-                    </Text>
-                }
-                ListFooterComponent={ListFooterComponent}
-                />
-                {/* <FlatList
-                    keyExtractor={(item, index) => index.toString()}
-                    data={results}
-                    renderItem={
-                        ({item}) => {
-                            return (
-                                <Text>
-                                    {item.park_name}
-                                </Text>
-                            )
-                        }
-                    }/> */}
-                
+            <SearchBar
+            placeholder="Search by park name..."
+            value={query}
+            onChangeText={(queryText) => setQuery(queryText)}/>
 
-                {/* {isLoading ? <ActivityIndicator/>: (
-                    <FlatList
-                    keyExtractor={(item, index) => index.toString()}
-                    data={parks}
-                    renderItem={
-                        ({item}) => {
-                            return (
-                                <Text>
-                                    {item.park_name}
-                                </Text>
-                            )
-                        }
-                    }/>
-                )} */}
-    </View>
+            <FlatList
+            data={FILTERS}
+            keyExtractor={(item, index) => item + index}
+            renderItem={({item}) => <FilterItem title={item}/>}
+            renderSectionHeader={({ section: { title } }) => (
+                <Text style={styles.header}>{title}</Text>
+            )}
+            ListHeaderComponent={
+                <Text style={styles.header}>
+                    FILTERS
+                </Text>
+            }
+            ListFooterComponent={ListFooterComponent}
+            />
+            <FAB
+            style={styles.floatBtn} 
+            color="#00d5ff"
+            icon={<FontAwesome5
+                name="search"
+                color="#ffffff"/>}
+            onPress={() => {
+                filterParks();
+                navigation.navigate('Results');}}
+            />
+        </View>
     )
 }
 
@@ -272,4 +260,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         position: "relative",
     },
+    floatBtn: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        position: 'absolute',
+        bottom: 80,
+        right: 10,
+    }
 });

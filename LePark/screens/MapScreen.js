@@ -4,7 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 
 import { RootStackScreenProps } from '../types';
 import { useEffect, useState } from 'react';
-import Carousel from '../components/Carousel';
+import Carousel from './Carousel';
 
 export default function MapScreen({ navigation }) {
 

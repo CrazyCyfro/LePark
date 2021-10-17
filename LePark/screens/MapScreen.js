@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-
 import { RootStackScreenProps } from '../types';
 import { useEffect, useState } from 'react';
 import Carousel from './Carousel';
+
+//expo install react-native-maps in terminal to import MapView
 
 export default function MapScreen({ navigation }) {
 

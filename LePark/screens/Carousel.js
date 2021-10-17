@@ -3,6 +3,9 @@ import { View } from 'react-native';
 import CarouselComp from 'react-native-snap-carousel'
 import CarouselItem from './CarouselItem'
 
+//'npm install --save react-native-snap-carousel' in terminal to import Carousel
+//'npm install --save @types/react-native-snap-carousel' this too
+
 const Carousel = () =>{
     const isCarousel = React.useRef(null);
     const appData=[

@@ -286,13 +286,14 @@ const styles = StyleSheet.create({
         fontSize: 32,
         backgroundColor: "#fff",
         position: "relative",
+        padding:20        
     },
     floatBtn: {
         width: 60,
         height: 60,
         borderRadius: 30,
         position: 'absolute',
-        bottom: 80,
-        right: 10,
+        bottom: 160,
+        right: 20,
     }
 });

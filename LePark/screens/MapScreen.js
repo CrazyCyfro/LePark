@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { RootStackScreenProps } from '../types';
 import { useEffect, useState } from 'react';
 import Carousel from './Carousel';
 
@@ -9,23 +8,23 @@ import Carousel from './Carousel';
 
 export default function MapScreen({ navigation }) {
 
-  let [data, setData] = useState<any[]>([]);
-  useEffect(() => {
-    fetch('http://datamall2.mytransport.sg/ltaodataservice/$metadata#CarParkAvailability', {
-      method: 'POST',
-      headers: {
-        AccountKey: 'lta_api_key',
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        $skip: 500
-      })
-    })
-      .then(res => res.json())
-      .then((responseJson) => { setData(responseJson) })
-      .catch(console.error)
-  }, []);
+  let [data, setData] = useState([]);
+//   useEffect(() => {
+//     fetch('http://datamall2.mytransport.sg/ltaodataservice/$metadata#CarParkAvailability', {
+//       method: 'POST',
+//       headers: {
+//         AccountKey: 'lta_api_key',
+//         Accept: 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         $skip: 500
+//       })
+//     })
+//       .then(res => res.json())
+//       .then((responseJson) => { setData(responseJson) })
+//       .catch(console.error)
+//   }, []);
 
   return (
     <View style={styles.container}>
@@ -41,16 +40,16 @@ export default function MapScreen({ navigation }) {
           coordinate={{ latitude: 1.3521, longitude: 103.8198 }}
           title={"Singapore"}
         />
-        {data.map((value, i) => {
+        {/* {data.map((value, i) => {
           return <Marker key={value.CarParkID}
             coordinate={{ latitude: parseFloat(value.Location.split(" ")[0]), longitude: parseFloat(value.Location.split(" ")[1]) }}
             title={value.Development}
             description={"Available Lots:" + value.AvailableLots} />
-        })}
+        })} */}
       </MapView>
-      <View style={styles.carouselContainer}>
+      {/* <View style={styles.carouselContainer}>
         <Carousel />
-      </View>
+      </View> */}
     </View>
   );
 }

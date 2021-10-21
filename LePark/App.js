@@ -49,7 +49,7 @@ function FavouritesScreen() {
 function MapScreen() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Map" component={Map} />
+      <Stack.Screen name="MapScreen" component={Map} />
     </Stack.Navigator>
   );
 }

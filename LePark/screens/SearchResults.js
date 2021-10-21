@@ -15,6 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { CheckBox } from 'react-native-elements'
 import * as Location from 'expo-location'
 import { ScrollView } from 'react-native-gesture-handler'
+import {Card, FAB} from 'react-native-paper';
 
 const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
 
@@ -71,7 +72,6 @@ export default function SearchResults({ navigation }) {
 
     // console.log(results);
     // console.log(results[0]);
-
     
     return(
         <SafeAreaView style={styles.container}>
@@ -81,7 +81,9 @@ export default function SearchResults({ navigation }) {
                     {results.map(item => (
                         <View style={styles.item} key={item.park_name}>
                             <View style={styles.imageFrame}>
-                                <Image source={require('../assets/download.jpg')} style={styles.image}/>
+                                <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                                    <Image source={require('../assets/download.jpg')} style={styles.image}/>
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.info}>
                                 <Text style={styles.parkName}>{item.park_name}</Text>

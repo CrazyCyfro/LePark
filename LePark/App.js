@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import SearchFilterScreen from './screens/SearchFilterScreen'
 import SearchResults from './screens/SearchResults'
 import Map from './screens/MapScreen';
+import ParkDetails from './screens/ParkDetails'
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ function SearchStack() {
     <Stack.Navigator>
       <Stack.Screen name='Filters' component={SearchFilterScreen} />
       {<Stack.Screen name='Results' component={SearchResults} />}
+      {<Stack.Screen name='Details' component={ParkDetails} />}
     </Stack.Navigator>
   )
 }
@@ -47,6 +49,16 @@ function FavouritesScreen() {
         </View>
     )
 }
+
+function ParkDetailsScreen() {
+  return(
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'white' }}>
+          <Text>Park Details</Text>
+          {/* <Favourites /> */}
+      </View>
+  )
+}
+
 
 export default function App() {
   return (

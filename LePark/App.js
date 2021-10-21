@@ -26,8 +26,8 @@ function SearchStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Filters" component={SearchFilterScreen} />
-      {<Stack.Screen name="Results" component={SearchResults} />}
-      {<Stack.Screen name='Details' component={ParkDetails} />}
+      <Stack.Screen name="Results" component={SearchResults} />
+      <Stack.Screen name='Details' component={ParkDetails} />
     </Stack.Navigator>
   );
 }
@@ -57,7 +57,7 @@ function MapScreen() {
 function HomeScreen() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={HomePageScreen} />
+      <Stack.Screen name="HomePage" component={HomePageScreen} />
     </Stack.Navigator>
   );
 }

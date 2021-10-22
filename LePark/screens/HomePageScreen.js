@@ -135,7 +135,7 @@ function HomePageScreen() {
                     }}
                   />
 
-                  {/* Heart Icon */}
+                  {/* Heart Icon
                   <Feather
                     name="heart"
                     style={{
@@ -145,7 +145,7 @@ function HomePageScreen() {
                       right: RFPercentage(2.5),
                     }}
                     color="white"
-                  />
+                  /> */}
 
                   {/* Bottom texts */}
                   <View

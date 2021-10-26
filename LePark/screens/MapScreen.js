@@ -2,33 +2,85 @@ import * as React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
-import Carousel from "./Carousel";
-
-//expo install react-native-maps in terminal to import MapView
+import { useFocusEffect } from '@react-navigation/native'
+// import Carousel from "./Carousel";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function MapScreen({ navigation }) {
-  let [data, setData] = useState([]);
-  useEffect(() => {
-    fetch(
-      "http://datamall2.mytransport.sg/ltaodataservice/$metadata#CarParkAvailability",
-      {
-        method: "POST",
-        headers: {
-          AccountKey: "lta_api_key",
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          $skip: 500,
-        }),
+  const [results, setResults] = useState([]);
+  const [carparkData, setCarparkData] = useState([]);
+
+  const CARPARK_URL = "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2";
+  const LTA_API_KEY = "sddcm97OSBWyyCWnAt+IoQ=="
+
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+      let finished = false;
+
+      const getCarparkData = async() => {
+        // for (let i = 0; i < 4; i++) {
+          fetch(CARPARK_URL, {
+            method: "POST",
+            headers: {
+              'AccountKey': LTA_API_KEY,
+              'Accept': 'application/json',
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              $skip: 500
+            })
+          })
+          .then((response) => response.json())
+          .then((responseJson) => {
+            if (isActive) {
+              let newCarparkData = responseJson.value;
+              let tmp = carparkData.concat(newCarparkData);
+              setCarparkData(tmp);
+              if (newCarparkData.length < 500) finished = true;
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+        // }
       }
-    )
-      .then((res) => res.json())
-      .then((responseJson) => {
-        setData(responseJson);
-      })
-      .catch(console.error);
-  }, []);
+
+      setCarparkData([]);
+      getCarparkData();
+
+      return () => {
+        isActive = false;
+      }
+    }, [])
+  )
+
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+
+      const getResults = async() => {
+        try {
+            const value = await AsyncStorage.getItem('SearchResults');
+            if(value !== null) {
+                if (isActive) setResults(JSON.parse(value));
+            }
+        } catch (error){
+            console.log(error)
+        }
+      }
+
+      getResults();
+
+      return () => {
+        isActive = false;
+      }
+    }, [])
+  )
+
+  useEffect(() => {
+    console.log(carparkData.length)
+  })
 
   return (
     <View style={styles.container}>
@@ -45,7 +97,7 @@ export default function MapScreen({ navigation }) {
           coordinate={{ latitude: 1.3521, longitude: 103.8198 }}
           title={"Singapore"}
         />
-        {data.map((value, i) => {
+        {/* {data.map((value, i) => {
           return (
             <Marker
               key={value.CarParkID}
@@ -57,11 +109,11 @@ export default function MapScreen({ navigation }) {
               description={"Available Lots:" + value.AvailableLots}
             />
           );
-        })}
+        })} */}
       </MapView>
-      <View style={styles.carouselContainer}>
+      {/* <View style={styles.carouselContainer}>
         <Carousel />
-      </View>
+      </View> */}
     </View>
   );
 }

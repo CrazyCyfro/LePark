@@ -16,7 +16,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomePageScreen from "./screens/HomePageScreen";
 import SearchFilterScreen from "./screens/SearchFilterScreen";
 import SearchResults from "./screens/SearchResults";
-import Map from "./screens/MapScreen";
+import MapScreen from "./screens/MapScreen";
 import ParkDetails from './screens/ParkDetails'
 
 const Tab = createMaterialBottomTabNavigator();
@@ -46,10 +46,10 @@ function FavouritesScreen() {
   );
 }
 
-function MapScreen() {
+function MapStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="MapScreen" component={Map} />
+      <Stack.Screen name="MapScreen" component={MapScreen} />
     </Stack.Navigator>
   );
 }
@@ -107,7 +107,7 @@ export default function App() {
       >
         <Tab.Screen name={"Home"} component={HomeScreen} />
         <Tab.Screen name={"Search"} component={SearchStack} />
-        <Tab.Screen name={"Map"} component={MapScreen} />
+        <Tab.Screen name={"Map"} component={MapStack} />
         {/* <Tab.Screen name={"Favourites"} component={FavouritesScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>

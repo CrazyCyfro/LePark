@@ -5,13 +5,17 @@ import { useEffect, useState } from "react";
 import { useFocusEffect } from '@react-navigation/native'
 // import Carousel from "./Carousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { kdTree } from '../utils/kdTree.js'
+import * as geolib from "geolib";
 
 export default function MapScreen({ navigation }) {
   const [results, setResults] = useState([]);
   const [carparkData, setCarparkData] = useState([]);
+  const [visibleCarparks, setVisibleCarparks] = useState([]);
 
   const CARPARK_URL = "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2";
   const LTA_API_KEY = "sddcm97OSBWyyCWnAt+IoQ=="
+  const MAX_DISTANCE = 1000
 
   useFocusEffect(
     React.useCallback(() => {
@@ -82,8 +86,33 @@ export default function MapScreen({ navigation }) {
   )
 
   useEffect(() => {
-    console.log(carparkData.slice(0,3))
-  })
+    let visible = [];
+    var parks = results.map(park => ({lat: park.x_coord, lon: park.y_coord}));
+    var carparks = carparkData.map(carpark => ({
+      lat: parseFloat(carpark.Location.split(" ")[0]),
+      lon: parseFloat(carpark.Location.split(" ")[1])})
+    );
+    
+    if (parks.length == 0 || carparks.length == 0) return;
+    var tree = new kdTree(parks, distance, ["lat", "lon"]);
+    // console.log(parks[0])
+    // console.log(carparks[1])
+    // console.log(tree.nearest(carparks[0], 1))
+    
+    for (var i = 0; i < carparks.length; i++) {
+      var nearest = tree.nearest(carparks[i], 1);
+      if (nearest[0][1] < MAX_DISTANCE) {
+        visible.push(carparkData[i]);
+      }
+    }
+
+    setVisibleCarparks(visible);
+
+  }, [carparkData, results])
+  
+  var distance = function(a, b) {
+    return geolib.getDistance(a, b);
+  }
 
   return (
     <View style={styles.container}>
@@ -96,7 +125,7 @@ export default function MapScreen({ navigation }) {
           longitudeDelta: 0.45,
         }}
       >
-        {carparkData.map((value, i) => {
+        {visibleCarparks.map((value, i) => {
           return (
             <Marker
               key={i}

@@ -16,41 +16,45 @@ export default function MapScreen({ navigation }) {
   useFocusEffect(
     React.useCallback(() => {
       let isActive = true;
-      let finished = false;
+      let tmp = [];
 
-      const getCarparkData = async() => {
-        // for (let i = 0; i < 4; i++) {
-          fetch(CARPARK_URL, {
+      const getCarparkData = async(n_skip) => {
+          fetch(CARPARK_URL.concat(`?$skip=${n_skip}`), {
             method: "POST",
             headers: {
-              'AccountKey': LTA_API_KEY,
-              'Accept': 'application/json',
+              AccountKey: LTA_API_KEY,
+              Accept: 'application/json',
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-              $skip: 500
-            })
           })
           .then((response) => response.json())
           .then((responseJson) => {
             if (isActive) {
               let newCarparkData = responseJson.value;
-              let tmp = carparkData.concat(newCarparkData);
-              setCarparkData(tmp);
-              if (newCarparkData.length < 500) finished = true;
+              tmp = tmp.concat(newCarparkData);
+
+              // console.log("skip: " + n_skip);
+              // console.log("new data len: " + newCarparkData.length);
+              // console.log("tmp len: " + tmp.length);
+
+              if (newCarparkData.length == 500) {
+                getCarparkData(n_skip + 500);
+              } else {
+                setCarparkData(tmp)
+              }
             }
           })
           .catch((error) => {
             console.log(error);
           })
-        // }
       }
 
       setCarparkData([]);
-      getCarparkData();
+      getCarparkData(0);
 
       return () => {
         isActive = false;
+        tmp = []
       }
     }, [])
   )
@@ -62,7 +66,7 @@ export default function MapScreen({ navigation }) {
       const getResults = async() => {
         try {
             const value = await AsyncStorage.getItem('SearchResults');
-            if(value !== null) {
+            if (value !== null) {
                 if (isActive) setResults(JSON.parse(value));
             }
         } catch (error){
@@ -78,9 +82,9 @@ export default function MapScreen({ navigation }) {
     }, [])
   )
 
-  useEffect(() => {
-    console.log(carparkData.length)
-  })
+  // useEffect(() => {
+  //   console.log(carparkData.length)
+  // })
 
   return (
     <View style={styles.container}>

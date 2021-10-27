@@ -15,7 +15,7 @@ export default function MapScreen({ navigation }) {
 
   const CARPARK_URL = "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2";
   const LTA_API_KEY = "sddcm97OSBWyyCWnAt+IoQ=="
-  const MAX_DISTANCE = 1000
+  const MAX_DISTANCE = 700
 
   useFocusEffect(
     React.useCallback(() => {
@@ -135,6 +135,19 @@ export default function MapScreen({ navigation }) {
               }}
               title={value.Development}
               description={"Available Lots: " + value.AvailableLots}
+            />
+          );
+        })}
+        {results.map((value, i) => {
+          return (
+            <Marker
+              key={i}
+              coordinate={{
+                latitude: value.x_coord,
+                longitude: value.y_coord,
+              }}
+              title={value.park_name}
+              pinColor="green"
             />
           );
         })}

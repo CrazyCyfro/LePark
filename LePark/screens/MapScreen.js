@@ -49,7 +49,6 @@ export default function MapScreen({ navigation }) {
           })
       }
 
-      setCarparkData([]);
       getCarparkData(0);
 
       return () => {
@@ -82,9 +81,9 @@ export default function MapScreen({ navigation }) {
     }, [])
   )
 
-  // useEffect(() => {
-  //   console.log(carparkData.length)
-  // })
+  useEffect(() => {
+    console.log(carparkData.slice(0,3))
+  })
 
   return (
     <View style={styles.container}>
@@ -97,23 +96,19 @@ export default function MapScreen({ navigation }) {
           longitudeDelta: 0.45,
         }}
       >
-        <Marker
-          coordinate={{ latitude: 1.3521, longitude: 103.8198 }}
-          title={"Singapore"}
-        />
-        {/* {data.map((value, i) => {
+        {carparkData.map((value, i) => {
           return (
             <Marker
-              key={value.CarParkID}
+              key={i}
               coordinate={{
                 latitude: parseFloat(value.Location.split(" ")[0]),
                 longitude: parseFloat(value.Location.split(" ")[1]),
               }}
               title={value.Development}
-              description={"Available Lots:" + value.AvailableLots}
+              description={"Available Lots: " + value.AvailableLots}
             />
           );
-        })} */}
+        })}
       </MapView>
       {/* <View style={styles.carouselContainer}>
         <Carousel />

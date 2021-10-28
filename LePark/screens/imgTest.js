@@ -7,12 +7,13 @@ import { StyleSheet,
 
 export default function imgTest() {
 
+
+    
     const gcsAPI = "https://www.googleapis.com/customsearch/v1/siterestrict?[parameters]"
     const gcsAPIKey = "AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw"
 
     const bingAPI = "https://api.bing.microsoft.com/v7.0/images/search?q="
     const bingAPIKey = "c7d2dfb5cb4442a9b581d7ef7eaaf9fe"
-    const query = "kitten"
 
     let results = [
 
@@ -54,15 +55,18 @@ export default function imgTest() {
     const getImg = async (results) => {
         try {
         //   const response = await fetch(bingAPI + `${query}&subscription-key=${bingAPIKey}`);
-
+        let photoID = []
         for(let i = 0; i < results.length; i++){
             let query = results[i].park_name
             console.log(query)
-            const response = await fetch(`https://api.bing.microsoft.com/v7.0/images/search?q=${query}k&subscription-key=c7d2dfb5cb4442a9b581d7ef7eaaf9fe&count=1`)
+            const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos&input=${query}&inputtype=textquery`)
             const json = await response.json();
-            console.log(json.value[0].contentUrl)
+            // console.log(json.candidates[0].photos[0].photo_reference)
+            photoID.push(json.candidates[0].photos[0].photo_reference)
+            // console.log(json)
         }
-          
+        //   console.log(photoID)
+          setLink(photoID)
         //   setLink((prev)=>[...prev, json.value[0].contentUrl])
         //   setLink(json.value[0].contentUrl)
         } catch (error) {
@@ -74,9 +78,9 @@ export default function imgTest() {
     //     await getImg(`${results[i].park_name}`)
     // }, []);
 
-    useEffect(() => {
-        getImg(results)
-    }, [])
+    // useEffect(() => {
+    //     getImg(results)
+    // }, [])
 
     // const setImg = (query, link) => {
     //     getImg(query)
@@ -84,10 +88,12 @@ export default function imgTest() {
     //     return x
     // }
 
+    // console.log(link)
+
     return(
         <View>
             <Text>Image</Text>
-            {/* <Image source={{uri: `${url}` }} style={styles.image}/> */}
+            <Image source={{uri: `https://live.staticflickr.com/3801/9538733208_3c3716c9e4_b.jpg` }} loadingIndicatorSource={1} style={styles.image}/>
         </View>
     )
 

@@ -42,6 +42,8 @@ export default function SearchResults({ navigation }) {
         }
     }
 
+    const gcsAPIKey = "AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw"
+
     const getResults = async() => {
         try {
             const value = await AsyncStorage.getItem('SearchResults');
@@ -53,12 +55,24 @@ export default function SearchResults({ navigation }) {
         }
     }
 
-    const getImg = async (query) => {
+    const getImg = async (results) => {
         try {
         //   const response = await fetch(bingAPI + `${query}&subscription-key=${bingAPIKey}`);
-          const response = await fetch(`https://api.bing.microsoft.com/v7.0/images/search?q=${query}k&subscription-key=c7d2dfb5cb4442a9b581d7ef7eaaf9fe&count=1`)
-          const json = await response.json();
-          setLink(json.value[0].contentUrl)
+        let photoID = []
+        let addresses = []
+        for(let i = 0; i < results.length; i++){
+            let query = results[i].park_name
+            // console.log(query)
+            const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
+            const json = await response.json();
+            // console.log(json.candidates[0].photos[0].photo_reference)
+            photoID.push(json.candidates[0].photos[0].photo_reference)
+            addresses.push(json.candidates[0].formatted_address)
+            // console.log(json)
+        }
+          setLink(photoID)
+        //   console.log(photoID)
+          setAddresses(addresses)
         } catch (error) {
           console.log(error);
         }
@@ -66,31 +80,30 @@ export default function SearchResults({ navigation }) {
 
     const [results, setResults] = useState([]);
     const [link, setLink] = useState([]);
-    let url = ""
+    const [addresses, setAddresses] = useState([]);
 
     useEffect(() => {
-        getResults();       
+        getResults();    
     }, []);
 
-    function setImg(query, link, url) {
-        getImg(query)
-        url = `${link}`
-        return url
-    }
+    useEffect(() => {
+        getImg(results);      
+    }, [results]);
+
+
+
+
+
+    console.log(link)
+    console.log(addresses)
 
     const resultsWithKey = results.map(item => ({
         ...item,
         key: item.park_name
     }))
 
-    // const resultsWithLink = resultsWithKey.map(item => ({
-    //     ...item,
-    //     link: link.map(item)
-    // }))
+    // console.log(link)
 
-    // let url = "https://live.staticflickr.com/3801/9538733208_3c3716c9e4_b.jpg"
-
-    // console.log(results)
     
     return(
         <SafeAreaView style={styles.container}>
@@ -103,10 +116,10 @@ export default function SearchResults({ navigation }) {
                         <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
                         <View style={styles.item} key={item.park_name}>
                             <View style={styles.imageFrame}>                        
-                                    <Image source={{uri: `${setImg(results[index].park_name, link, url)}`}} style={styles.image}/>                                
+                                    <Image source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw`}} style={styles.image}/>                                
                             </View>
                             <View style={styles.info}>
-                                <Text style={styles.parkName}>{item.park_name} {index}</Text>
+                                <Text style={styles.parkName}>{item.park_name}</Text>
                                 <View style={styles.location}>
                                     <FontAwesome5
                                         name="map-marker-alt"

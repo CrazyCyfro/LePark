@@ -79,36 +79,38 @@ export default function SearchResults({ navigation }) {
                 <Text style={styles.header}>RESULTS</Text>
                 <ScrollView>
                     {results.map(item => (
-                        <View style={styles.item} key={item.park_name}>
-                            <View style={styles.imageFrame}>
-                                <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
-                                    <Image source={require('../assets/download.jpg')} style={styles.image}/>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.info}>
-                                <Text style={styles.parkName}>{item.park_name}</Text>
-                                <View style={styles.location}>
-                                    <FontAwesome5
-                                        name="map-marker-alt"
-                                        color="grey"
-                                        style={{marginRight:5}}
-                                    />
-                                    <Text style={{color:'grey'}}> {item.region}</Text>
-                                </View>
-                                <View style={styles.facilityList}>
-                                    {item.facilities.map(facility => (
-                                        <View style={styles.facilityIcon} key={facility}>
+                        <View>
+                            <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                                <View style={styles.item} key={item.park_name}>
+                                    <View style={styles.imageFrame}>
+                                        <Image source={require('../assets/download.jpg')} style={styles.image}/>
+                                    </View>
+                                    <View style={styles.info}>
+                                        <Text style={styles.parkName}>{item.park_name}</Text>
+                                        <View style={styles.location}>
                                             <FontAwesome5
-                                                name={icons.filters[facility]}
-                                                size={12}
+                                                name="map-marker-alt"
+                                                color="grey"
+                                                style={{marginRight:5}}
                                             />
+                                            <Text style={{color:'grey'}}> {item.region}</Text>
                                         </View>
-                                    ))}
+                                        <View style={styles.facilityList}>
+                                            {item.facilities.map(facility => (
+                                                <View style={styles.facilityIcon} key={facility}>
+                                                    <FontAwesome5
+                                                        name={icons.filters[facility]}
+                                                        size={12}
+                                                    />
+                                                </View>
+                                            ))}
+                                        </View>
+                                        <View style={styles.distanceCont}>
+                                            <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
+                                        </View>
+                                    </View>
                                 </View>
-                                <View style={styles.distanceCont}>
-                                    <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
-                                </View>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     ))}
                     <Text>

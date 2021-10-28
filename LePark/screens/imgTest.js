@@ -7,13 +7,7 @@ import { StyleSheet,
 
 export default function imgTest() {
 
-
-    
-    const gcsAPI = "https://www.googleapis.com/customsearch/v1/siterestrict?[parameters]"
-    const gcsAPIKey = "AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw"
-
-    const bingAPI = "https://api.bing.microsoft.com/v7.0/images/search?q="
-    const bingAPIKey = "c7d2dfb5cb4442a9b581d7ef7eaaf9fe"
+    const gcsAPIKey = "insert key here"
 
     let results = [
 

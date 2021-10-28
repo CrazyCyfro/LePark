@@ -42,7 +42,7 @@ export default function SearchResults({ navigation }) {
         }
     }
 
-    const gcsAPIKey = "AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw"
+    const gcsAPIKey = 'insert key here'
 
     const getResults = async() => {
         try {
@@ -57,21 +57,16 @@ export default function SearchResults({ navigation }) {
 
     const getImg = async (results) => {
         try {
-        //   const response = await fetch(bingAPI + `${query}&subscription-key=${bingAPIKey}`);
         let photoID = []
         let addresses = []
         for(let i = 0; i < results.length; i++){
             let query = results[i].park_name
-            // console.log(query)
             const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
             const json = await response.json();
-            // console.log(json.candidates[0].photos[0].photo_reference)
             photoID.push(json.candidates[0].photos[0].photo_reference)
             addresses.push(json.candidates[0].formatted_address)
-            // console.log(json)
         }
           setLink(photoID)
-        //   console.log(photoID)
           setAddresses(addresses)
         } catch (error) {
           console.log(error);
@@ -90,10 +85,6 @@ export default function SearchResults({ navigation }) {
         getImg(results);      
     }, [results]);
 
-
-
-
-
     console.log(link)
     console.log(addresses)
 
@@ -102,9 +93,6 @@ export default function SearchResults({ navigation }) {
         key: item.park_name
     }))
 
-    // console.log(link)
-
-    
     return(
         <SafeAreaView style={styles.container}>
             <View>
@@ -116,7 +104,7 @@ export default function SearchResults({ navigation }) {
                         <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
                         <View style={styles.item} key={item.park_name}>
                             <View style={styles.imageFrame}>                        
-                                    <Image source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw`}} style={styles.image}/>                                
+                                    <Image source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} style={styles.image}/>                                
                             </View>
                             <View style={styles.info}>
                                 <Text style={styles.parkName}>{item.park_name}</Text>

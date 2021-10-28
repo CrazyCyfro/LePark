@@ -108,7 +108,7 @@ function ParkDetails({ route, navigation }) {
                     </View>
                     
                     <Text style={styles.description}>
-                        {item.park_name} is a green space located in {item.region}. With carefully maintained greenery and various facilities, the park recreates a lush green and authentic experience for all park-goers to bask in. Park-goers may also use the facilies to add a new dimension to the experience.
+                        {item.park_name} is a green space located in {item.region}. With carefully maintained greenery and various facilities, the park recreates a lush green and authentic experience for all park-goers to bask in. Park-goers may also use the facilties to add a new dimension to the experience.
                     </Text>
                     <Text style={styles.subHeader2}>Amenities</Text>
                     <View style={styles.facilityList}>

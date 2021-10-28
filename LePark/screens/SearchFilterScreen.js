@@ -94,6 +94,35 @@ export default function SearchFilterScreen(props) {
     "Woodlands",
     "Yishun",
   ];
+  const icons = {
+    filters:{
+        "Shelter": "landmark",
+        "Toilet": "restroom",
+        "F&B": "utensils",
+        "Event Space": "calendar",
+        "Fitness Area": "dumbbell",
+        "Playground": "shapes",
+        "Access Point": "wifi",
+        "Carpark": "parking",
+        "Water Body": "water",
+        "Bicycle Rental Shop": "bicycle",
+        "Dog-Area": "dog",
+        "Beach Volley": "volleyball-ball",
+        "Foot Relax": "shoe-prints",
+        "Woodball": 'gavel',
+        "Water Point": "tint",
+        "Bus": "bus",
+        "Lookout Point": "binoculars",
+        "Baby": "baby",
+        "Bbq Pit": "fire",
+        "Skateboard": "snowboarding",
+        "Campsite": "campground",
+        "Shower": "shower",
+        "Picnic": "shopping-basket",
+        "Cycling": 'biking',
+        "Wheelchair-Access": "accessible-icon"
+    }
+}
   const [selected, setSelected] = useState([]);
   const [regions, setRegions] = useState([]);
   const [query, setQuery] = useState("");
@@ -188,10 +217,20 @@ export default function SearchFilterScreen(props) {
     }
   };
 
-  const FilterItem = ({ title }) => (
+  const FilterItem = ({ title }) => { 
+    return (
     <CheckBox
-      style={styles.item}
+      containerStyle={selected.includes(title) ?{backgroundColor:"#70B996", borderRadius: 20, marginVertical: 9, paddingVertical: 16} : 
+      {backgroundColor: "#ECECEC", borderRadius: 20, marginVertical: 9, paddingVertical: 16}}
       title={title}
+      checkedIcon={<FontAwesome5
+        name={icons.filters[title]}
+        size={12}
+    />}
+      uncheckedIcon={<FontAwesome5
+        name={icons.filters[title]}
+        size={12}
+    />}
       checked={selected.includes(title)}
       onPress={() => {
         let tmp = [...selected];
@@ -206,13 +245,18 @@ export default function SearchFilterScreen(props) {
         }
         setSelected(tmp);
       }}
+      
     />
-  );
+  )};
 
   const LocationItem = ({ title }) => (
     <CheckBox
+        containerStyle={regions.includes(title) ?{backgroundColor:"#70B996", borderRadius: 20, marginVertical: 9, paddingVertical: 16} : 
+        {backgroundColor: "#ECECEC", borderRadius: 20, marginVertical: 9, paddingVertical: 16}}
       style={styles.item}
       title={title}
+      checkedIcon={<View style = {{position: "absolute"}}/>}
+      uncheckedIcon={<View style = {{position: "absolute"}}/>}
       checked={regions.includes(title)}
       onPress={() => {
         let tmp = [...regions];
@@ -238,7 +282,7 @@ export default function SearchFilterScreen(props) {
         onChangeText={(queryText) => setQuery(queryText)}
       />
       <ScrollView
-       contentContainerStyle={{flexDirection : "row", flexWrap: "wrap"}}>
+       contentContainerStyle={{flexDirection : "row", flexWrap: "wrap", marginHorizontal: 10}}>
             <View style={styles.titleContainer}>
                 <Text style={styles.header}>FILTERS</Text>
             </View>
@@ -254,7 +298,7 @@ export default function SearchFilterScreen(props) {
       </ScrollView>
       <FAB
         style={styles.floatBtn}
-        color="#00d5ff"
+        color="#70B996"
         icon={<FontAwesome5 name="search" color="#ffffff" />}
         onPress={() => {
           filterParks();
@@ -273,13 +317,14 @@ const styles = StyleSheet.create({
     height: screenHeight - 80,
   },
   titleContainer: {
-    width: 500
+    width: 500,
+    margin: -8,
+    marginTop: 10
   },
   title: {
     fontSize: 24,
   },
   item: {
-    backgroundColor: "#f9c2ff",
     padding: 20,
     marginVertical: 8,
   },
@@ -288,6 +333,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     position: "relative",
     padding: 20,
+    fontWeight: "bold",
+    color: "#1f4c50"
   },
   floatBtn: {
     width: 60,

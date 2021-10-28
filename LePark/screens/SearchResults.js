@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
         height: screenHeight - 154,
+        paddingHorizontal: 10
     },
     item: {
         padding: 10,
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
         position: "relative",
         padding: 10,
         margin: 0,
-        marginTop: 20,
+        marginTop: 30,
         marginLeft: 10,
         fontWeight: "bold",
         color: "#1f4c50"

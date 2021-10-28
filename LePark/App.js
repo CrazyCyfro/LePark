@@ -77,8 +77,9 @@ export default function App() {
           position: "absolute",
           overflow: 'hidden',
           borderRadius: 20,
-          height: 80,
-          paddingTop: 5,
+          height: 75,
+          padding: 8,
+          bottom: 10
         }}
         activeColor={"#2D6D72"}
         inactiveColor={"#979796"}
@@ -102,7 +103,7 @@ export default function App() {
         <Tab.Screen name={"Home"} component={HomeScreen} />
         <Tab.Screen name={"Search"} component={SearchStack} />
         <Tab.Screen name={"Map"} component={MapStack} />
-        <Tab.Screen name={"Favourites"} component={FavouritesScreen} />
+        {/* <Tab.Screen name={"Favourites"} component={FavouritesScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -111,7 +112,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
   },

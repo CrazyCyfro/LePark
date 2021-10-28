@@ -18,6 +18,7 @@ import SearchFilterScreen from "./screens/SearchFilterScreen";
 import SearchResults from "./screens/SearchResults";
 import MapScreen from "./screens/MapScreen";
 import ParkDetails from './screens/ParkDetails'
+import imgTest from "./screens/imgTest";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -33,16 +34,9 @@ function SearchStack() {
 }
 function FavouritesScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "white",
-      }}
-    >
-      <Text>Favourites</Text>
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="FavouritesScreen" component={imgTest} />
+    </Stack.Navigator>
   );
 }
 
@@ -108,7 +102,7 @@ export default function App() {
         <Tab.Screen name={"Home"} component={HomeScreen} />
         <Tab.Screen name={"Search"} component={SearchStack} />
         <Tab.Screen name={"Map"} component={MapStack} />
-        {/* <Tab.Screen name={"Favourites"} component={FavouritesScreen} /> */}
+        <Tab.Screen name={"Favourites"} component={FavouritesScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -1,14 +1,23 @@
+import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
 import { StyleSheet,
     Text,
     View,
+    SectionList,
     FlatList,
     Dimensions,
     TouchableOpacity,
     Image,
     SafeAreaView} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { CheckBox } from 'react-native-elements'
+import * as Location from 'expo-location'
+import { ScrollView } from 'react-native-gesture-handler'
+import imageSearch from "react-native-google-image-search";
+
+const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
 
 export default function SearchResults({ navigation }) {
 
@@ -53,60 +62,30 @@ export default function SearchResults({ navigation }) {
         }
     }
 
-    const getImg = async (query) => {
-        try {
-        //   const response = await fetch(bingAPI + `${query}&subscription-key=${bingAPIKey}`);
-          const response = await fetch(`https://api.bing.microsoft.com/v7.0/images/search?q=${query}k&subscription-key=c7d2dfb5cb4442a9b581d7ef7eaaf9fe&count=1`)
-          const json = await response.json();
-          setLink(json.value[0].contentUrl)
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
     const [results, setResults] = useState([]);
-    const [link, setLink] = useState([]);
-    let url = ""
 
     useEffect(() => {
-        getResults();       
+        getResults();
     }, []);
 
-    function setImg(query, link, url) {
-        getImg(query)
-        url = `${link}`
-        return url
-    }
+    // console.log(results);
+    // console.log(results[0]);
 
-    const resultsWithKey = results.map(item => ({
-        ...item,
-        key: item.park_name
-    }))
-
-    // const resultsWithLink = resultsWithKey.map(item => ({
-    //     ...item,
-    //     link: link.map(item)
-    // }))
-
-    // let url = "https://live.staticflickr.com/3801/9538733208_3c3716c9e4_b.jpg"
-
-    // console.log(results)
     
     return(
         <SafeAreaView style={styles.container}>
             <View>
                 <Text style={styles.header}>RESULTS</Text>
-                <FlatList 
-                    data={resultsWithKey}
-                    initialNumToRender={10}
-                    renderItem={({item, index}) => (
-                        <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                <ScrollView>
+                    {results.map(item => (
                         <View style={styles.item} key={item.park_name}>
-                            <View style={styles.imageFrame}>                        
-                                    <Image source={{uri: `${setImg(results[index].park_name, link, url)}`}} style={styles.image}/>                                
+                            <View style={styles.imageFrame}>
+                                <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                                    <Image source={{uri: 'http://www.justrunlah.com/wp-content/uploads/2015/02/Bishan-Park-singapore.jpg'}} style={styles.image}/>
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.info}>
-                                <Text style={styles.parkName}>{item.park_name} {index}</Text>
+                                <Text style={styles.parkName}>{item.park_name}</Text>
                                 <View style={styles.location}>
                                     <FontAwesome5
                                         name="map-marker-alt"
@@ -116,23 +95,27 @@ export default function SearchResults({ navigation }) {
                                     <Text style={{color:'grey'}}> {item.region}</Text>
                                 </View>
                                 <View style={styles.facilityList}>
-                                            {item.facilities.map(facility => (
-                                                <View style={styles.facilityIcon} key={facility}>
-                                                    <FontAwesome5
-                                                        name={icons.filters[facility]}
-                                                        size={12}
-                                                    />
-                                                </View>
-                                            ))}
+                                    {item.facilities.map(facility => (
+                                        <View style={styles.facilityIcon} key={facility}>
+                                            <FontAwesome5
+                                                name={icons.filters[facility]}
+                                                size={12}
+                                            />
                                         </View>
-                                        <View style={styles.distanceCont}>
-                                            <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
-                                        </View>
-                                    </View>
+                                    ))}
                                 </View>
-                            </TouchableOpacity>
-                    )}
-                />   
+                                <View style={styles.distanceCont}>
+                                    <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
+                                </View>
+                            </View>
+                        </View>
+                    ))}
+                    <Text>
+                        {"\n"}
+                        {"\n"}
+                        {"\n"}
+                    </Text>
+                </ScrollView>
             </View>
         </SafeAreaView>
     )
@@ -146,11 +129,11 @@ const screenWidth = Dimensions.get('window').width
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
-        height: screenHeight - 154,
+        height: screenHeight - 142,
     },
     item: {
         padding: 10,
-        marginVertical: 5,
+        marginVertical: 8,
         flexDirection:"row",
         height: 200,
         backgroundColor: "white",
@@ -161,8 +144,6 @@ const styles = StyleSheet.create({
         position: "relative",
         padding: 10,
         margin: 0,
-        marginTop: 20,
-        marginLeft: 10,
         fontWeight: "bold",
         color: "#1f4c50"
     },
@@ -187,7 +168,7 @@ const styles = StyleSheet.create({
         bottom: 20
     },
     imageFrame: {
-        width: 165,
+        width: 150,
         padding: 10,
     },
     image:{

@@ -42,7 +42,7 @@ export default function SearchResults({ navigation }) {
         }
     }
 
-    const gcsAPIKey = 'insert key here'
+    const gcsAPIKey = ""
 
     const getResults = async() => {
         try {
@@ -63,7 +63,12 @@ export default function SearchResults({ navigation }) {
             let query = results[i].park_name
             const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
             const json = await response.json();
-            photoID.push(json.candidates[0].photos[0].photo_reference)
+            if (!json.candidates[0].photos){
+                photoID.push("")
+            } else {
+                photoID.push(json.candidates[0].photos[0].photo_reference)
+            }
+            
             addresses.push(json.candidates[0].formatted_address)
         }
           setLink(photoID)
@@ -104,7 +109,7 @@ export default function SearchResults({ navigation }) {
                         <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
                         <View style={styles.item} key={item.park_name}>
                             <View style={styles.imageFrame}>                        
-                                    <Image source={{uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} style={styles.image}/>                                
+                                    <Image source={link[index] == "" ? require('../assets/park6.jpg') : {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} style={styles.image}/>                                
                             </View>
                             <View style={styles.info}>
                                 <Text style={styles.parkName}>{item.park_name}</Text>

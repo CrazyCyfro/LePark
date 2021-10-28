@@ -7,7 +7,7 @@ import { StyleSheet,
 
 export default function imgTest() {
 
-    const gcsAPIKey = "insert key here"
+    const gcsAPIKey = ""
 
     let results = [
 

@@ -9,6 +9,10 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
+screens/SearchResultsBackup.js
+screens/SearchFilterBackup.js
+screens/imgTest.js
+
 
 # macOS
 .DS_Store

@@ -4,10 +4,9 @@ import { StyleSheet,
     View,
     Image,
 } from 'react-native';
+import {gcsAPIKey} from "@env"
 
 export default function imgTest() {
-
-    const gcsAPIKey = ""
 
     let results = [
 
@@ -48,46 +47,39 @@ export default function imgTest() {
 
     const getImg = async (results) => {
         try {
-        //   const response = await fetch(bingAPI + `${query}&subscription-key=${bingAPIKey}`);
         let photoID = []
         for(let i = 0; i < results.length; i++){
             let query = results[i].park_name
-            console.log(query)
-            const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos&input=${query}&inputtype=textquery`)
+            const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
             const json = await response.json();
-            // console.log(json.candidates[0].photos[0].photo_reference)
-            photoID.push(json.candidates[0].photos[0].photo_reference)
-            // console.log(json)
+            if (!json.candidates[0].photos){
+                photoID.push("")
+            } else {
+                photoID.push(json.candidates[0].photos[0].photo_reference)
+            }
         }
-        //   console.log(photoID)
           setLink(photoID)
-        //   setLink((prev)=>[...prev, json.value[0].contentUrl])
-        //   setLink(json.value[0].contentUrl)
         } catch (error) {
           console.log(error);
         }
       };
 
-    // useEffect(async() => {
-    //     await getImg(`${results[i].park_name}`)
-    // }, []);
 
-    // useEffect(() => {
-    //     getImg(results)
-    // }, [])
+    useEffect(() => {
+        getImg(results)
+    }, [])
 
-    // const setImg = (query, link) => {
-    //     getImg(query)
-    //     let x = link
-    //     return x
-    // }
 
-    // console.log(link)
+    console.log(link)
 
     return(
         <View>
             <Text>Image</Text>
-            <Image source={{uri: `https://live.staticflickr.com/3801/9538733208_3c3716c9e4_b.jpg` }} loadingIndicatorSource={1} style={styles.image}/>
+            <View style={styles.imageFrame}>                        
+                    <Image source={link[0] == "" ? require('../assets/park6.jpg') : {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[0]}&key=${gcsAPIKey}`}} 
+                    loadingIndicatorSource={require("../assets/adaptive-icon.png")}
+                    style={styles.image}/>                                
+            </View>
         </View>
     )
 

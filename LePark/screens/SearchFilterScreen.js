@@ -20,6 +20,7 @@ import { CheckBox, FAB, SearchBar } from "react-native-elements";
 import * as Location from "expo-location";
 import * as geolib from "geolib";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ScrollView } from "react-native-gesture-handler";
 
 const API_URL = "https://mocki.io/v1/00136ced-5611-4a25-aeef-5c7706a7f35b";
 // const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
@@ -229,20 +230,6 @@ export default function SearchFilterScreen(props) {
     />
   );
 
-  const ListFooterComponent = (
-    <>
-      <FlatList
-        data={REGIONS}
-        keyExtractor={(item, index) => item + index}
-        renderItem={({ item }) => <LocationItem title={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.header}>{title}</Text>
-        )}
-        ListHeaderComponent={<Text style={styles.header}>LOCATIONS</Text>}
-      />
-    </>
-  );
-
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar
@@ -250,17 +237,21 @@ export default function SearchFilterScreen(props) {
         value={query}
         onChangeText={(queryText) => setQuery(queryText)}
       />
-
-      <FlatList
-        data={FILTERS}
-        keyExtractor={(item, index) => item + index}
-        renderItem={({ item }) => <FilterItem title={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.header}>{title}</Text>
-        )}
-        ListHeaderComponent={<Text style={styles.header}>FILTERS</Text>}
-        ListFooterComponent={ListFooterComponent}
-      />
+      <ScrollView
+       contentContainerStyle={{flexDirection : "row", flexWrap: "wrap"}}>
+            <View style={styles.titleContainer}>
+                <Text style={styles.header}>FILTERS</Text>
+            </View>
+            {FILTERS.map(item => (
+                <FilterItem title={item} key={item} />
+            ))}
+            <View style={styles.titleContainer}>
+                <Text style={styles.header}>LOCATIONS</Text>
+            </View>
+            {REGIONS.map(item => (
+                <LocationItem title={item} key={item} />
+            ))}
+      </ScrollView>
       <FAB
         style={styles.floatBtn}
         color="#00d5ff"
@@ -280,6 +271,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     height: screenHeight - 80,
+  },
+  titleContainer: {
+    width: 500
   },
   title: {
     fontSize: 24,

@@ -89,8 +89,8 @@ export default function SearchResults({ navigation }) {
         getImg(results);      
     }, [results]);
 
-    console.log(link)
-    console.log(addresses)
+    // console.log(link)
+    // console.log(addresses)
 
     const resultsWithKey = results.map(item => ({
         ...item,

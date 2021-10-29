@@ -127,9 +127,9 @@ function HomePageScreen() {
     getImg(randomParks)
   },[randomParks])
 
-  console.log(randomParks)
-  console.log(bgPark)
-  console.log(bgParkInfo)
+  // console.log(randomParks)
+  // console.log(bgPark)
+  // console.log(bgParkInfo)
   // console.log(link)
   // console.log(addresses)
 

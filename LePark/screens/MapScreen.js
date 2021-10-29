@@ -145,8 +145,8 @@ export default function MapScreen({ navigation }) {
       <MapView
         style={styles.map}
         region={{
-          latitude: results.length > 0 ? results[activeIndex].x_coord : 1.3521,
-          longitude: results.length > 0 ? results[activeIndex].y_coord : 103.8198,
+          latitude: results.length > activeIndex ? results[activeIndex].x_coord : 1.3521,
+          longitude: results.length > activeIndex ? results[activeIndex].y_coord : 103.8198,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}

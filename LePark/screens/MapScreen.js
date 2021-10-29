@@ -1,21 +1,29 @@
 import * as React from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Text
+} from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useFocusEffect } from '@react-navigation/native'
-// import Carousel from "./Carousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { kdTree } from '../utils/kdTree.js'
 import * as geolib from "geolib";
+import Carousel from 'react-native-snap-carousel'
 
 export default function MapScreen({ navigation }) {
   const [results, setResults] = useState([]);
   const [carparkData, setCarparkData] = useState([]);
   const [visibleCarparks, setVisibleCarparks] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const CARPARK_URL = "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2";
   const LTA_API_KEY = "sddcm97OSBWyyCWnAt+IoQ=="
   const MAX_DISTANCE = 700
+
+  const carousel = useRef(null)
 
   useFocusEffect(
     React.useCallback(() => {
@@ -44,6 +52,9 @@ export default function MapScreen({ navigation }) {
               if (newCarparkData.length == 500) {
                 getCarparkData(n_skip + 500);
               } else {
+                // tmp = tmp.map(item => 
+                //   ({...item, pinColor: item.AvailableLots > 0 ? "blue" : "red"}))
+                // console.log(tmp[0])
                 setCarparkData(tmp)
               }
             }
@@ -114,17 +125,32 @@ export default function MapScreen({ navigation }) {
     return geolib.getDistance(a, b);
   }
 
+  // useEffect(() => {
+  //   console.log(activeIndex)
+  //   if (results.length > 0) console.log(results[activeIndex].park_name)
+  // }, [activeIndex])
+
+  const CarouselItem = ( {item, index} ) => {
+    return (
+      <View style={styles.carouselItem}>
+        <Text>
+          {item.park_name}
+        </Text>
+      </View>
+    )
+  }
+
   return (
-    <View style={styles.container}>
+    <View>
       <MapView
         style={styles.map}
-        initialRegion={{
-          latitude: 1.3521,
-          longitude: 103.8198,
-          latitudeDelta: 0.1,
-          longitudeDelta: 0.45,
+        region={{
+          latitude: results.length > 0 ? results[activeIndex].x_coord : 1.3521,
+          longitude: results.length > 0 ? results[activeIndex].y_coord : 103.8198,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
         }}
-      >
+        >
         {visibleCarparks.map((value, i) => {
           return (
             <Marker
@@ -135,6 +161,7 @@ export default function MapScreen({ navigation }) {
               }}
               title={value.Development}
               description={"Available Lots: " + value.AvailableLots}
+              // pinColor={value.pinColor}
             />
           );
         })}
@@ -152,9 +179,16 @@ export default function MapScreen({ navigation }) {
           );
         })}
       </MapView>
-      {/* <View style={styles.carouselContainer}>
-        <Carousel />
-      </View> */}
+      <View style={styles.carouselContainer}>
+        <Carousel
+          layout={"default"}
+          ref={carousel}
+          data={results}
+          sliderWidth={Dimensions.get("window").width}
+          itemWidth={300}
+          renderItem={CarouselItem}
+          onSnapToItem = {index => setActiveIndex(index)}/>
+      </View>
     </View>
   );
 }
@@ -162,22 +196,27 @@ export default function MapScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
+    // backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
+    // padding: 20,
   },
   map: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
   },
   carouselContainer: {
+    flex:1,
+    flexDirection: 'row',
+    justifyContent: 'center',
     position: "absolute",
     bottom: 100,
-    left: 0,
-    right: 0,
-    paddingBottom: 50,
-    alignItems: "center",
-    backgroundColor: "transparent",
   },
+  carouselItem: {
+    backgroundColor:'floralwhite',
+    padding: 20,
+    justifyContent: "center",
+    marginLeft:50,
+    marginRight:10,
+  }
 });

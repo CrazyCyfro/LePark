@@ -1,15 +1,23 @@
+import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
 import { StyleSheet,
     Text,
     View,
+    SectionList,
     FlatList,
     Dimensions,
     TouchableOpacity,
     Image,
     SafeAreaView} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {gcsAPIKey} from "@env"
+import { CheckBox } from 'react-native-elements'
+import * as Location from 'expo-location'
+import { ScrollView } from 'react-native-gesture-handler'
+import imageSearch from "react-native-google-image-search";
+
+const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
 
 export default function SearchResults({ navigation }) {
 
@@ -54,63 +62,27 @@ export default function SearchResults({ navigation }) {
         }
     }
 
-    const getImg = async (results) => {
-        try {
-        let photoID = []
-        let addresses = []
-        for(let i = 0; i < results.length; i++){
-            let query = results[i].park_name
-            const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
-            const json = await response.json();
-            if (!json.candidates[0].photos){
-                photoID.push("")
-            } else {
-                photoID.push(json.candidates[0].photos[0].photo_reference)
-            }
-            
-            addresses.push(json.candidates[0].formatted_address)
-        }
-          setLink(photoID)
-          setAddresses(addresses)
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
     const [results, setResults] = useState([]);
-    const [link, setLink] = useState([]);
-    const [addresses, setAddresses] = useState([]);
 
     useEffect(() => {
-        getResults();    
+        getResults();
     }, []);
 
-    useEffect(() => {
-        getImg(results);      
-    }, [results]);
+    // console.log(results);
+    // console.log(results[0]);
 
-    // console.log(link)
-    // console.log(addresses)
-
-    const resultsWithKey = results.map(item => ({
-        ...item,
-        key: item.park_name
-    }))
-
+    
     return(
         <SafeAreaView style={styles.container}>
             <View>
                 <Text style={styles.header}>RESULTS</Text>
-                <FlatList 
-                    data={resultsWithKey}
-                    initialNumToRender={10}
-                    renderItem={({item, index}) => (
-                        <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                <ScrollView>
+                    {results.map(item => (
                         <View style={styles.item} key={item.park_name}>
-                            <View style={styles.imageFrame}>                        
-                                    <Image source={link[index] == "" ? require('../assets/park6.jpg') : {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} 
-                                    loadingIndicatorSource={{uri: '../assets/adaptive-icon.png'}}
-                                    style={styles.image}/>                                
+                            <View style={styles.imageFrame}>
+                                <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                                    <Image source={{uri: 'http://www.justrunlah.com/wp-content/uploads/2015/02/Bishan-Park-singapore.jpg'}} style={styles.image}/>
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.info}>
                                 <Text style={styles.parkName}>{item.park_name}</Text>
@@ -123,23 +95,27 @@ export default function SearchResults({ navigation }) {
                                     <Text style={{color:'grey'}}> {item.region}</Text>
                                 </View>
                                 <View style={styles.facilityList}>
-                                            {item.facilities.map(facility => (
-                                                <View style={styles.facilityIcon} key={facility}>
-                                                    <FontAwesome5
-                                                        name={icons.filters[facility]}
-                                                        size={12}
-                                                    />
-                                                </View>
-                                            ))}
+                                    {item.facilities.map(facility => (
+                                        <View style={styles.facilityIcon} key={facility}>
+                                            <FontAwesome5
+                                                name={icons.filters[facility]}
+                                                size={12}
+                                            />
                                         </View>
-                                        <View style={styles.distanceCont}>
-                                            <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
-                                        </View>
-                                    </View>
+                                    ))}
                                 </View>
-                            </TouchableOpacity>
-                    )}
-                />   
+                                <View style={styles.distanceCont}>
+                                    <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
+                                </View>
+                            </View>
+                        </View>
+                    ))}
+                    <Text>
+                        {"\n"}
+                        {"\n"}
+                        {"\n"}
+                    </Text>
+                </ScrollView>
             </View>
         </SafeAreaView>
     )
@@ -153,12 +129,11 @@ const screenWidth = Dimensions.get('window').width
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
-        height: screenHeight - 154,
-        paddingHorizontal: 10
+        height: screenHeight - 142,
     },
     item: {
         padding: 10,
-        marginVertical: 5,
+        marginVertical: 8,
         flexDirection:"row",
         height: 200,
         backgroundColor: "white",
@@ -169,8 +144,6 @@ const styles = StyleSheet.create({
         position: "relative",
         padding: 10,
         margin: 0,
-        marginTop: 30,
-        marginLeft: 10,
         fontWeight: "bold",
         color: "#1f4c50"
     },
@@ -195,7 +168,7 @@ const styles = StyleSheet.create({
         bottom: 20
     },
     imageFrame: {
-        width: 165,
+        width: 150,
         padding: 10,
     },
     image:{

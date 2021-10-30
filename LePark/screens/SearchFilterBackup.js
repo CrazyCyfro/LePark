@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
   Dimensions,
 } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -20,7 +21,6 @@ import { CheckBox, FAB, SearchBar } from "react-native-elements";
 import * as Location from "expo-location";
 import * as geolib from "geolib";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ScrollView } from "react-native-gesture-handler";
 
 const API_URL = "https://mocki.io/v1/00136ced-5611-4a25-aeef-5c7706a7f35b";
 // const API_URL = 'https://mocki.io/v1/ec0964fc-71b8-4a74-ad69-1bdd280e60af'
@@ -94,35 +94,6 @@ export default function SearchFilterScreen(props) {
     "Woodlands",
     "Yishun",
   ];
-  const icons = {
-    filters:{
-        "Shelter": "landmark",
-        "Toilet": "restroom",
-        "F&B": "utensils",
-        "Event Space": "calendar",
-        "Fitness Area": "dumbbell",
-        "Playground": "shapes",
-        "Access Point": "wifi",
-        "Carpark": "parking",
-        "Water Body": "water",
-        "Bicycle Rental Shop": "bicycle",
-        "Dog-Area": "dog",
-        "Beach Volley": "volleyball-ball",
-        "Foot Relax": "shoe-prints",
-        "Woodball": 'gavel',
-        "Water Point": "tint",
-        "Bus": "bus",
-        "Lookout Point": "binoculars",
-        "Baby": "baby",
-        "Bbq Pit": "fire",
-        "Skateboard": "snowboarding",
-        "Campsite": "campground",
-        "Shower": "shower",
-        "Picnic": "shopping-basket",
-        "Cycling": 'biking',
-        "Wheelchair-Access": "accessible-icon"
-    }
-}
   const [selected, setSelected] = useState([]);
   const [regions, setRegions] = useState([]);
   const [query, setQuery] = useState("");
@@ -217,20 +188,10 @@ export default function SearchFilterScreen(props) {
     }
   };
 
-  const FilterItem = ({ title }) => { 
-    return (
+  const FilterItem = ({ title }) => (
     <CheckBox
-      containerStyle={selected.includes(title) ?{backgroundColor:"#70B996", borderRadius: 20, marginVertical: 9, paddingVertical: 16} : 
-      {backgroundColor: "#ECECEC", borderRadius: 20, marginVertical: 9, paddingVertical: 16}}
+      style={styles.item}
       title={title}
-      checkedIcon={<FontAwesome5
-        name={icons.filters[title]}
-        size={12}
-    />}
-      uncheckedIcon={<FontAwesome5
-        name={icons.filters[title]}
-        size={12}
-    />}
       checked={selected.includes(title)}
       onPress={() => {
         let tmp = [...selected];
@@ -245,18 +206,13 @@ export default function SearchFilterScreen(props) {
         }
         setSelected(tmp);
       }}
-      
     />
-  )};
+  );
 
   const LocationItem = ({ title }) => (
     <CheckBox
-        containerStyle={regions.includes(title) ?{backgroundColor:"#70B996", borderRadius: 20, marginVertical: 9, paddingVertical: 16} : 
-        {backgroundColor: "#ECECEC", borderRadius: 20, marginVertical: 9, paddingVertical: 16}}
       style={styles.item}
       title={title}
-      checkedIcon={<View style = {{position: "absolute"}}/>}
-      uncheckedIcon={<View style = {{position: "absolute"}}/>}
       checked={regions.includes(title)}
       onPress={() => {
         let tmp = [...regions];
@@ -274,6 +230,20 @@ export default function SearchFilterScreen(props) {
     />
   );
 
+  const ListFooterComponent = (
+    <>
+      <FlatList
+        data={REGIONS}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <LocationItem title={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.header}>{title}</Text>
+        )}
+        ListHeaderComponent={<Text style={styles.header}>LOCATIONS</Text>}
+      />
+    </>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar
@@ -281,24 +251,21 @@ export default function SearchFilterScreen(props) {
         value={query}
         onChangeText={(queryText) => setQuery(queryText)}
       />
-      <ScrollView
-       contentContainerStyle={{flexDirection : "row", flexWrap: "wrap", marginHorizontal: 10}}>
+      <FlatList
+        data={FILTERS}
+        contentContainerStyle={{flexDirection : "row", flexWrap: "wrap"}} 
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <FilterItem title={item} />}
+        ListHeaderComponent={
             <View style={styles.titleContainer}>
                 <Text style={styles.header}>FILTERS</Text>
             </View>
-            {FILTERS.map(item => (
-                <FilterItem title={item} key={item} />
-            ))}
-            <View style={styles.titleContainer}>
-                <Text style={styles.header}>LOCATIONS</Text>
-            </View>
-            {REGIONS.map(item => (
-                <LocationItem title={item} key={item} />
-            ))}
-      </ScrollView>
+        }
+        ListFooterComponent={ListFooterComponent}
+      />
       <FAB
         style={styles.floatBtn}
-        color="#70B996"
+        color="#00d5ff"
         icon={<FontAwesome5 name="search" color="#ffffff" />}
         onPress={() => {
           filterParks();
@@ -317,14 +284,13 @@ const styles = StyleSheet.create({
     height: screenHeight - 80,
   },
   titleContainer: {
-    width: 500,
-    margin: -8,
-    marginTop: 10
+    width: 500
   },
   title: {
     fontSize: 24,
   },
   item: {
+    backgroundColor: "#f9c2ff",
     padding: 20,
     marginVertical: 8,
   },
@@ -333,8 +299,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     position: "relative",
     padding: 20,
-    fontWeight: "bold",
-    color: "#1f4c50"
   },
   floatBtn: {
     width: 60,

@@ -18,6 +18,7 @@ import SearchFilterScreen from "./screens/SearchFilterScreen";
 import SearchResults from "./screens/SearchResults";
 import MapScreen from "./screens/MapScreen";
 import ParkDetails from './screens/ParkDetails'
+import imgTest from "./screens/imgTest";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -33,16 +34,9 @@ function SearchStack() {
 }
 function FavouritesScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "white",
-      }}
-    >
-      <Text>Favourites</Text>
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="FavouritesScreen" component={imgTest} />
+    </Stack.Navigator>
   );
 }
 
@@ -83,8 +77,9 @@ export default function App() {
           position: "absolute",
           overflow: 'hidden',
           borderRadius: 20,
-          height: 80,
-          paddingTop: 5,
+          height: 75,
+          padding: 8,
+          bottom: 10
         }}
         activeColor={"#2D6D72"}
         inactiveColor={"#979796"}
@@ -117,7 +112,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
   },

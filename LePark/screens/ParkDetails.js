@@ -4,11 +4,7 @@ import { StyleSheet,
     Text,
     View,
     ScrollView,
-    ImageBackground,
-    SectionList,
-    FlatList,
     Dimensions,
-    TouchableOpacity,
     Image,
     SafeAreaView} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'

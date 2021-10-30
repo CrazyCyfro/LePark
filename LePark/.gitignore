@@ -8,7 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-.env/
+.env
 screens/SearchResultsBackup.js/
 screens/SearchFilterBackup.js/
 screens/imgTest.js/

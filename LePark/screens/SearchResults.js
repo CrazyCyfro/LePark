@@ -54,6 +54,7 @@ export default function SearchResults({ navigation }) {
         }
     }
 
+    //const gcsAPIKey = 'AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw';
     const getImg = async (results) => {
         try {
         let photoID = []
@@ -103,9 +104,9 @@ export default function SearchResults({ navigation }) {
                 <Text style={styles.header}>RESULTS</Text>
                 <FlatList 
                     data={resultsWithKey}
-                    initialNumToRender={10}
+                    initialNumToRender={3}
                     renderItem={({item, index}) => (
-                        <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item})}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Details', {item:item, index:index, link:link, addresses:addresses})}>
                         <View style={styles.item} key={item.park_name}>
                             <View style={styles.imageFrame}>                        
                                     <Image source={link[index] == "" ? require('../assets/park6.jpg') : {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} 

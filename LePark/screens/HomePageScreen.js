@@ -300,15 +300,15 @@ function HomePageScreen() {
                         {addresses[i]? addresses[i] : ""}
                       </Text>
                     </View>
-                    <Text
+                    {/*<Text
                       style={{
                         color: "#fff",
                         marginTop: RFPercentage(1),
                         fontSize: RFPercentage(2),
                       }}
                     >
-                      15.3 km
-                    </Text>
+                      {((item.distance)/1000).toFixed(2)}km
+                    </Text>*/}
                   </View>
                 </ImageBackground>
               </TouchableOpacity>

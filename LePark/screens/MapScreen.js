@@ -3,7 +3,8 @@ import {
   Dimensions,
   StyleSheet,
   View,
-  Text
+  Text,
+  TouchableOpacity,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { useEffect, useState, useRef } from "react";
@@ -12,16 +13,20 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { kdTree } from '../utils/kdTree.js'
 import * as geolib from "geolib";
 import Carousel from 'react-native-snap-carousel'
+import {gcsAPIKey} from "@env";
 
 export default function MapScreen({ navigation }) {
   const [results, setResults] = useState([]);
   const [carparkData, setCarparkData] = useState([]);
   const [visibleCarparks, setVisibleCarparks] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
-
+  
   const CARPARK_URL = "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2";
   const LTA_API_KEY = "sddcm97OSBWyyCWnAt+IoQ=="
   const MAX_DISTANCE = 700
+
+  const [link, setLink] = useState([]);
+  const [addresses, setAddresses] = useState([]);
 
   const carousel = useRef(null)
 
@@ -81,7 +86,15 @@ export default function MapScreen({ navigation }) {
         try {
             const value = await AsyncStorage.getItem('SearchResults');
             if (value !== null) {
-                if (isActive) setResults(JSON.parse(value));
+                if (isActive) {
+                  // let tmp = JSON.parse(value);
+                  // tmp = tmp.map(item => ({
+                  //   ...item,
+                  //   key: item.park_name
+                  // }))
+                  // setResults(tmp);
+                  setResults(JSON.parse(value));
+                }
             }
         } catch (error){
             console.log(error)
@@ -125,6 +138,33 @@ export default function MapScreen({ navigation }) {
     return geolib.getDistance(a, b);
   }
 
+  const getImg = async (results) => {
+    try {
+    let photoID = []
+    let addresses = []
+    for(let i = 0; i < results.length; i++){
+        let query = results[i].park_name
+        const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
+        const json = await response.json();
+        if (!json.candidates[0].photos){
+            photoID.push("")
+        } else {
+            photoID.push(json.candidates[0].photos[0].photo_reference)
+        }
+        
+        addresses.push(json.candidates[0].formatted_address)
+    }
+      setLink(photoID)
+      setAddresses(addresses)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getImg(results);
+  }, [results])
+
   // useEffect(() => {
   //   console.log(activeIndex)
   //   if (results.length > 0) console.log(results[activeIndex].park_name)
@@ -133,9 +173,12 @@ export default function MapScreen({ navigation }) {
   const CarouselItem = ( {item, index} ) => {
     return (
       <View style={styles.carouselItem}>
-        <Text>
-          {item.park_name}
-        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Details', {item:item, index:index, link:link, addresses:addresses})}>
+          <Text style={styles.parkText}>
+            {item.park_name}
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -213,10 +256,15 @@ const styles = StyleSheet.create({
     bottom: 100,
   },
   carouselItem: {
-    backgroundColor:'floralwhite',
+    backgroundColor:'#ffffff',
     padding: 20,
+    borderRadius: 10,
     justifyContent: "center",
-    marginLeft:50,
-    marginRight:10,
+    alignItems:'center',
+    height:90,
+  },
+  parkText: {
+    fontWeight: 'bold',
+    fontSize: 16,
   }
 });

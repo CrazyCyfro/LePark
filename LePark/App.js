@@ -44,6 +44,7 @@ function MapStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="MapScreen" component={MapScreen} />
+      <Stack.Screen name='Details' component={ParkDetails} />
     </Stack.Navigator>
   );
 }

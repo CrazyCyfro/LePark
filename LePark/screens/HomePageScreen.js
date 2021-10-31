@@ -11,7 +11,7 @@ import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import {gcsAPIKey} from "@env"
 
-function HomePageScreen() {
+function HomePageScreen({ navigation }) {
 
   const API_URL = "https://mocki.io/v1/00136ced-5611-4a25-aeef-5c7706a7f35b"
   const [parks, setParks] = useState([])
@@ -213,6 +213,7 @@ function HomePageScreen() {
             {/* mainBox */}
             {randomParks.map((item, i) => (
               <TouchableOpacity
+                onPress={() => navigation.navigate('Details', {item:item, index:i, link:link, addresses:addresses})}
                 activeOpacity={0.8}
                 key={i}
                 style={{

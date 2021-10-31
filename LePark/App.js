@@ -53,6 +53,7 @@ function HomeScreen() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomePage" component={HomePageScreen} />
+      <Stack.Screen name='Details' component={ParkDetails} />
     </Stack.Navigator>
   );
 }

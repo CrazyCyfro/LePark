@@ -68,8 +68,7 @@ function ParkDetails({ route, navigation }) {
     const index = route.params.index;
     const link = route.params.link;
 
-    //const lat = item.x_coord;
-    //const long = item.y_coord;
+    const dist = ((item.distance)/1000).toFixed(2)
     const {width} = Dimensions.get("window");
     const height = width*0.8;
 
@@ -112,7 +111,7 @@ function ParkDetails({ route, navigation }) {
                             {item.region}
                         </Text>
                         <Text style={styles.distance}>
-                            {((item.distance)/1000).toFixed(2)}km
+                            {isNaN(dist) ? null : dist + 'km'}
                         </Text>
                     </View>
                     

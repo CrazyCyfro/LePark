@@ -12,12 +12,6 @@ import { Feather } from "@expo/vector-icons";
 import {gcsAPIKey} from "@env"
 
 function HomePageScreen() {
-  const cartData = [
-    { imageSource: require("../assets/download.jpg") },
-    { imageSource: require("../assets/download.jpg") },
-    { imageSource: require("../assets/download.jpg") },
-    { imageSource: require("../assets/download.jpg") },
-  ];
 
   const API_URL = "https://mocki.io/v1/00136ced-5611-4a25-aeef-5c7706a7f35b"
   const [parks, setParks] = useState([])
@@ -30,9 +24,9 @@ function HomePageScreen() {
   const getParks = async () => {
     try {
       const response = await fetch(API_URL);
-      console.log("fetching...")
+      // console.log("fetching...")
       const json = await response.json();
-      console.log("converting...")
+      // console.log("converting...")
       setParks(json);
     } catch (error) {
       console.log(error);
@@ -43,32 +37,34 @@ function HomePageScreen() {
     let randParks = []
     let randNum = []
     let bgPark = []
-    
-    while (randNum.length < 5){
-      let x = Math.floor(Math.random() * 189)
-      while (randNum.includes(x)){
-        x = Math.floor(Math.random() * 189)
+
+    if (parks.length == 190){
+      while (randNum.length < 5){
+        let x = Math.floor(Math.random() * 189)
+        while (randNum.includes(x)){
+          x = Math.floor(Math.random() * 189)
+        }
+        randNum.push(x)
       }
-      randNum.push(x)
-    }
 
-    for (let i = 1; i < randNum.length; i++){
-      randParks.push(parks[randNum[i]])
-    }
+      for (let i = 1; i < randNum.length; i++){
+        randParks.push(parks[randNum[i]])
+      }
 
-    bgPark.push(parks[randNum[0]])
-    setRandomParks(randParks)
-    setBgPark(bgPark)
+      bgPark.push(parks[randNum[0]])
+      setRandomParks(randParks)
+      setBgPark(bgPark)
+    }
   }
 
-  const getImg = async (results) => {
+  const getImg = async () => {
     try {
     let photoID = []
     let addresses = []
     let bgParkInfo = []
-    if (results.length != 0){
-      for(let i = 0; i < results.length; i++){
-        let query = results[i].park_name
+    if (randomParks.length == 4){
+      for(let i = 0; i < randomParks.length; i++){
+        let query = randomParks[i].park_name
         const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
         const json = await response.json();
         if (!json.candidates[0].photos){
@@ -82,7 +78,7 @@ function HomePageScreen() {
       setAddresses(addresses)
     }
 
-    if(bgPark.length != 0){
+    if(bgPark.length == 1){
       let query = bgPark[0].park_name
       const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
       const json = await response.json();
@@ -238,7 +234,7 @@ function HomePageScreen() {
                     alignItems: "flex-start",
                   }}
                   source={link[i] == "" ? require('../assets/park6.jpg') : 
-                  {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photo_reference=${link[i]}&key=${gcsAPIKey}`}}
+                  {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=700&photo_reference=${link[i]}&key=${gcsAPIKey}`}}
                 >
                   {/* Shadow Layer */}
                   <View

@@ -272,7 +272,19 @@ export default function SearchFilterScreen(props) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style={"dark"} />
       <SearchBar
+        containerStyle={{
+          backgroundColor: 'white', 
+          borderWidth: 1, 
+          borderRadius: 23, 
+          marginTop: 40, 
+          width: 300, height: 50, 
+          alignSelf:"center",
+          marginBottom: 20
+        }}
+        inputContainerStyle={{backgroundColor:"white", height: 35}}
+        inputStyle={{backgroundColor:"white"}}
         placeholder="Search by park name..."
         value={query}
         onChangeText={(queryText) => setQuery(queryText)}
@@ -315,7 +327,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     width: 500,
     margin: -8,
-    marginTop: 10
+    marginTop: 0
   },
   title: {
     fontSize: 24,
@@ -329,6 +341,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     position: "relative",
     padding: 20,
+    paddingTop: 0,
     fontWeight: "bold",
     color: "#1f4c50"
   },

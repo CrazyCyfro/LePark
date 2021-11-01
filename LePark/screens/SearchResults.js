@@ -157,7 +157,7 @@ const screenWidth = Dimensions.get('window').width
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
-        height: screenHeight - 154,
+        height: screenHeight - 168,
         paddingHorizontal: 10
     },
     item: {

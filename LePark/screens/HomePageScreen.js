@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
+// import { StatusBar } from "expo-status-bar";
 import {
   View,
   Text,
   ImageBackground,
   TouchableOpacity,
   ScrollView,
+  StatusBar,
+  Dimensions,
 } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import {gcsAPIKey} from "@env"
+
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight
+const SCREEN_HEIGHT = Dimensions.get('window').height
+const SCREEN_WIDTH = Dimensions.get('window').width
+
 
 function HomePageScreen({ navigation }) {
 
@@ -131,8 +139,15 @@ function HomePageScreen({ navigation }) {
 
   return (
     <View
-      style={{ flex: 1, justifyContent: "flex-start", alignItems: "center" }}
+      style={{ 
+        flex: 1, 
+        justifyContent: "flex-start", 
+        alignItems: "center", 
+        height: SCREEN_HEIGHT-STATUSBAR_HEIGHT,
+        paddingTop: STATUSBAR_HEIGHT
+     }}
     >
+      <StatusBar style={"light"}/>
       {/* Main background Image */}
       <ImageBackground
         style={{
@@ -200,7 +215,7 @@ function HomePageScreen({ navigation }) {
         {/* cart */}
         <ScrollView
           horizontal={true}
-          style={{ flex: 1, width: "100%", marginBottom: RFPercentage(4) }}
+          style={{ flex: 1, width: "100%", marginBottom: RFPercentage(5) }}
         >
           <View
             style={{

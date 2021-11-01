@@ -5,6 +5,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { useEffect, useState, useRef } from "react";
@@ -14,6 +15,7 @@ import { kdTree } from '../utils/kdTree.js'
 import * as geolib from "geolib";
 import Carousel from 'react-native-snap-carousel'
 import {gcsAPIKey} from "@env";
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 export default function MapScreen({ navigation }) {
   const [results, setResults] = useState([]);
@@ -192,9 +194,25 @@ export default function MapScreen({ navigation }) {
       <View style={styles.carouselItem}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Details', {item:item, index:index, link:link, addresses:addresses})}>
-          <Text style={styles.parkText}>
-            {item.park_name}
-          </Text>
+          <View style={styles.imageFrame}>                        
+            <Image source={link[index] == "" ? require('../assets/park6.jpg') : 
+            {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photo_reference=${link[index]}&key=${gcsAPIKey}`}} 
+            loadingIndicatorSource={{uri: '../assets/adaptive-icon.png'}}
+            style={styles.image}/>                                
+          </View>
+          <View style={styles.info}>
+            <Text style={styles.parkText}>{item.park_name}</Text>
+            <View style ={{flexDirection:"row", marginTop: 10,}}>
+              <FontAwesome5
+                  name="map-marker-alt"
+                  color="grey"
+                  style={{marginRight:5, marginTop: 4}}
+              />
+              <Text style={{fontWeight: '400'}}>{isNaN(item.distance) ? null : ((item.distance)/1000).toFixed(2) + 'km'}</Text>
+            </View>
+          </View>
+
+
         </TouchableOpacity>
       </View>
     )
@@ -241,6 +259,14 @@ export default function MapScreen({ navigation }) {
         })}
       </MapView>
       <View style={styles.carouselContainer}>
+        <Text style={{
+          position:'absolute', 
+          fontWeight: 'bold',
+          color: "#1f4c50",
+          left: 20, 
+          top: -47, 
+          fontSize: 30,
+        }}>RESULTS</Text>
         <Carousel
           layout={"default"}
           ref={carousel}
@@ -276,20 +302,35 @@ const styles = StyleSheet.create({
   carouselContainer: {
     flex:1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     position: "absolute",
     bottom: 100,
   },
   carouselItem: {
     backgroundColor:'#ffffff',
-    padding: 20,
+    padding: 10,
     borderRadius: 10,
-    justifyContent: "center",
-    alignItems:'center',
-    height:90,
+    flexDirection:"row",
+    height:100,
   },
   parkText: {
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  imageFrame:{
+    height:80,
+    width:80,
+    borderRadius: 10,
+  },
+  image: {
+    height: "100%",
+    width: "100%",
+    resizeMode: 'cover',
+    borderRadius: 15
+  },
+  info:{
+    position: 'absolute',
+    left: 90,
+    width: 210
   }
 });

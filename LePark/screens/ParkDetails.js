@@ -1,9 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import React, {Component, useEffect, useState} from 'react';
 import { StyleSheet,
     Text,
     View,
     ScrollView,
+    StatusBar,
     ImageBackground,
     SectionList,
     FlatList,
@@ -19,9 +20,14 @@ import {gcsAPIKey} from "@env"
 //const RGEO_URL = 'https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json'
 //const RGEO_API_KEY = 'AI6HsgTR_Sc7GykoVzHa0prg-GWjZm6rv-XC5k7GWVM'
 //const gcsAPIKey = 'AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw';
-
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight
+const SCREEN_HEIGHT = Dimensions.get('window').height
+const SCREEN_WIDTH = Dimensions.get('window').width
 
 function ParkDetails({ route, navigation }) {
+
+    
+
     const icons = {
         filters:{
             "Shelter": "landmark",
@@ -90,7 +96,7 @@ function ParkDetails({ route, navigation }) {
     //var randomNumber = Math.floor(Math.random() * 5) + 1 ;
     
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.window}>
             <ScrollView>
                 <Image
                     source={link[index] == "" ? require('../assets/park6.jpg') : {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} 
@@ -194,6 +200,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#ECECEC',
         borderRadius:10
     },
+    window: {
+        paddingTop: STATUSBAR_HEIGHT,
+        height: SCREEN_HEIGHT - STATUSBAR_HEIGHT
+    }
 })
 
 export default ParkDetails

@@ -79,7 +79,7 @@ export default function App() {
           position: "absolute",
           overflow: 'hidden',
           borderRadius: 20,
-          height: 75,
+          height: 70,
           padding: 8,
           bottom: 10
         }}

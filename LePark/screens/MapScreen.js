@@ -24,10 +24,15 @@ export default function MapScreen({ navigation }) {
   const CARPARK_URL = "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailabilityv2";
   const LTA_API_KEY = "sddcm97OSBWyyCWnAt+IoQ=="
   const MAX_DISTANCE = 700
+  const INIT_LAT = 1.3521
+  const INIT_LON = 103.8198
+  const DELTA_LAT = 0.01
+  const DELTA_LON = 0.01
 
   const [link, setLink] = useState([]);
   const [addresses, setAddresses] = useState([]);
 
+  const mapView = useRef(null)
   const carousel = useRef(null)
 
   useFocusEffect(
@@ -57,8 +62,8 @@ export default function MapScreen({ navigation }) {
               if (newCarparkData.length == 500) {
                 getCarparkData(n_skip + 500);
               } else {
-                // tmp = tmp.map(item => 
-                //   ({...item, pinColor: item.AvailableLots > 0 ? "blue" : "red"}))
+                tmp = tmp.map(item => 
+                  ({...item, pinColor: item.AvailableLots > 0 ? "green" : "red"}))
                 // console.log(tmp[0])
                 setCarparkData(tmp)
               }
@@ -93,7 +98,18 @@ export default function MapScreen({ navigation }) {
                   //   key: item.park_name
                   // }))
                   // setResults(tmp);
-                  setResults(JSON.parse(value));
+                  let tmp = JSON.parse(value)
+                  setResults(tmp);
+                  if (mapView !== null) {
+                    mapView.current.animateToRegion(
+                      {
+                        latitude: tmp.length > 0 ? tmp[0].x_coord : INIT_LAT,
+                        longitude: tmp.length > 0 ? tmp[0].y_coord : INIT_LON,
+                        latitudeDelta: DELTA_LAT,
+                        longitudeDelta: DELTA_LON,
+                      }
+                    )
+                  }
                 }
             }
         } catch (error){
@@ -170,6 +186,7 @@ export default function MapScreen({ navigation }) {
   //   if (results.length > 0) console.log(results[activeIndex].park_name)
   // }, [activeIndex])
 
+
   const CarouselItem = ( {item, index} ) => {
     return (
       <View style={styles.carouselItem}>
@@ -187,24 +204,25 @@ export default function MapScreen({ navigation }) {
     <View>
       <MapView
         style={styles.map}
-        region={{
-          latitude: results.length > activeIndex ? results[activeIndex].x_coord : 1.3521,
-          longitude: results.length > activeIndex ? results[activeIndex].y_coord : 103.8198,
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
-        }}
+        ref={mapView}
+        initialRegion={({
+          latitude: results.length > activeIndex ? results[activeIndex].x_coord : INIT_LAT,
+          longitude: results.length > activeIndex ? results[activeIndex].y_coord : INIT_LON,
+          latitudeDelta: DELTA_LAT,
+          longitudeDelta: DELTA_LON,
+        })}
         >
         {visibleCarparks.map((value, i) => {
           return (
             <Marker
-              key={i}
+              key={`${i},${value.pinColor}`}
               coordinate={{
                 latitude: parseFloat(value.Location.split(" ")[0]),
                 longitude: parseFloat(value.Location.split(" ")[1]),
               }}
               title={value.Development}
               description={"Available Lots: " + value.AvailableLots}
-              // pinColor={value.pinColor}
+              pinColor={value.pinColor}
             />
           );
         })}
@@ -217,7 +235,7 @@ export default function MapScreen({ navigation }) {
                 longitude: value.y_coord,
               }}
               title={value.park_name}
-              pinColor="green"
+              pinColor="blue"
             />
           );
         })}
@@ -230,7 +248,14 @@ export default function MapScreen({ navigation }) {
           sliderWidth={Dimensions.get("window").width}
           itemWidth={300}
           renderItem={CarouselItem}
-          onSnapToItem = {index => setActiveIndex(index)}/>
+          onSnapToItem = {index => {
+            setActiveIndex(index)
+            mapView.current.animateToRegion({
+              latitude: results.length > index ? results[index].x_coord : INIT_LAT,
+              longitude: results.length > index ? results[index].y_coord : INIT_LON,
+              latitudeDelta: DELTA_LAT,
+              longitudeDelta: DELTA_LON,
+            })}}/>
       </View>
     </View>
   );

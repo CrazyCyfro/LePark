@@ -10,6 +10,7 @@ import { StyleSheet,
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {gcsAPIKey} from "@env"
+import { StatusBar } from "expo-status-bar";
 
 export default function SearchResults({ navigation }) {
 
@@ -100,6 +101,7 @@ export default function SearchResults({ navigation }) {
 
     return(
         <SafeAreaView style={styles.container}>
+            <StatusBar translucent={true}/>
             <View>
                 <Text style={styles.header}>RESULTS</Text>
                 <FlatList 

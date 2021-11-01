@@ -16,6 +16,7 @@ import * as geolib from "geolib";
 import Carousel from 'react-native-snap-carousel'
 import {gcsAPIKey} from "@env";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { StatusBar } from "expo-status-bar";
 
 export default function MapScreen({ navigation }) {
   const [results, setResults] = useState([]);
@@ -220,6 +221,7 @@ export default function MapScreen({ navigation }) {
 
   return (
     <View>
+      <StatusBar translucent={true}/>
       <MapView
         style={styles.map}
         ref={mapView}

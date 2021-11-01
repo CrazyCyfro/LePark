@@ -150,7 +150,7 @@ function HomePageScreen({ navigation }) {
         // paddingTop: STATUSBAR_HEIGHT
      }}
     >
-      <StatusBar style={"light"}/>
+      <StatusBar translucent={"false"}/>
       {/* Main background Image */}
       <ImageBackground
         style={{

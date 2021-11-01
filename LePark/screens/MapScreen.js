@@ -13,6 +13,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { kdTree } from '../utils/kdTree.js'
 import * as geolib from "geolib";
+import * as Location from "expo-location";
 import Carousel from 'react-native-snap-carousel'
 import {gcsAPIKey} from "@env";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -33,6 +34,7 @@ export default function MapScreen({ navigation }) {
 
   const [link, setLink] = useState([]);
   const [addresses, setAddresses] = useState([]);
+  const [userLocation, setUserLocation] = useState(null);
 
   const mapView = useRef(null)
   const carousel = useRef(null)
@@ -184,9 +186,26 @@ export default function MapScreen({ navigation }) {
   }, [results])
 
   // useEffect(() => {
-  //   console.log(activeIndex)
-  //   if (results.length > 0) console.log(results[activeIndex].park_name)
-  // }, [activeIndex])
+  //   console.log(userLocation)
+  // })
+
+  const getUserLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      return;
+    }
+
+    try {
+      let location = await Location.getCurrentPositionAsync({});
+      setUserLocation(location);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserLocation();
+  }, [])
 
 
   const CarouselItem = ( {item, index} ) => {
@@ -218,6 +237,23 @@ export default function MapScreen({ navigation }) {
     )
   }
 
+  const UserMarker = () => {
+    if (userLocation != undefined) {
+      return (
+        <Marker
+          key={userLocation.timestamp}
+          coordinate={{
+            latitude: userLocation.coords.latitude,
+            longitude: userLocation.coords.longitude,
+          }}
+          title="You are here"
+          pinColor="orange"/>
+        )
+    } else {
+      return;
+    }
+  }
+
   return (
     <View>
       <MapView
@@ -230,6 +266,7 @@ export default function MapScreen({ navigation }) {
           longitudeDelta: DELTA_LON,
         })}
         >
+        <UserMarker/>
         {visibleCarparks.map((value, i) => {
           return (
             <Marker

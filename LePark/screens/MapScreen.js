@@ -100,7 +100,7 @@ export default function MapScreen({ navigation }) {
                   // setResults(tmp);
                   let tmp = JSON.parse(value)
                   setResults(tmp);
-                  if (mapView !== null) {
+                  if (mapView.current !== null) {
                     mapView.current.animateToRegion(
                       {
                         latitude: tmp.length > 0 ? tmp[0].x_coord : INIT_LAT,

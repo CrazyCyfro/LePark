@@ -138,23 +138,40 @@ export default function SearchFilterScreen(props) {
     }
   };
 
+  const getUserLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied");
+      return 'failure';
+    }
+
+    try {
+      let location = await Location.getCurrentPositionAsync({});
+      setUserLocation(location);
+    } catch (error) {
+      console.log(error);
+    }
+    return 'success';
+  };
+
   useEffect(() => {
     getParks();
+    getUserLocation();    
+    
+    // (async () => {
+    //   let { status } = await Location.requestForegroundPermissionsAsync();
+    //   if (status !== "granted") {
+    //     setErrorMsg("Permission to access location was denied");
+    //     return;
+    //   }
 
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      try {
-        let location = await Location.getCurrentPositionAsync({});
-        setUserLocation(location);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    //   try {
+    //     let location = await Location.getCurrentPositionAsync({});
+    //     setUserLocation(location);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // })();
   }, []);
 
   // useEffect(() => {

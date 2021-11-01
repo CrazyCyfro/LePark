@@ -137,7 +137,7 @@ function ParkDetails({ route, navigation }) {
 
 const styles = StyleSheet.create({
     container:{
-        padding:10,
+        padding:8,
         margin:5
     },
     image:{

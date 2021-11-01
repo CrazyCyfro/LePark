@@ -134,7 +134,10 @@ export default function SearchResults({ navigation }) {
                                             ))}
                                         </View>
                                         <View style={styles.distanceCont}>
-                                            <Text style={styles.distance}>{"\n"}{((item.distance)/1000).toFixed(2)}km</Text>
+                                            <Text style={styles.distance}>
+                                                {isNaN(item.distance) ? null : ((item.distance)/1000).toFixed(2) + 'km'}
+                                                {/*{"\n"}{((item.distance)/1000).toFixed(2)}km */}
+                                            </Text>
                                         </View>
                                     </View>
                                 </View>

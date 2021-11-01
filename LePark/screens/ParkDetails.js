@@ -137,14 +137,14 @@ function ParkDetails({ route, navigation }) {
 
 const styles = StyleSheet.create({
     container:{
-        padding:8,
+        padding:10,
         margin:5
     },
     image:{
         resizeMode: 'cover',
     },
     topHeader:{
-        fontSize:25,
+        fontSize:22,
         fontWeight: "bold",
         color: "#2f4f4f"
     },

@@ -142,7 +142,7 @@ export default function SearchFilterScreen(props) {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       setErrorMsg("Permission to access location was denied");
-      return 'failure';
+      return;
     }
 
     try {
@@ -151,44 +151,23 @@ export default function SearchFilterScreen(props) {
     } catch (error) {
       console.log(error);
     }
-    return 'success';
   };
 
   useEffect(() => {
     getParks();
-    getUserLocation();    
-    
-    // (async () => {
-    //   let { status } = await Location.requestForegroundPermissionsAsync();
-    //   if (status !== "granted") {
-    //     setErrorMsg("Permission to access location was denied");
-    //     return;
-    //   }
-
-    //   try {
-    //     let location = await Location.getCurrentPositionAsync({});
-    //     setUserLocation(location);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // })();
+    getUserLocation();
   }, []);
-
-  // useEffect(() => {
-  //     console.log(userLocation.coords.longitude)
-  // })
 
   const filterParks = async () => {
     var matchedParks = [...parks];
 
     for (var i = 0; i < parks.length; i++) {
-      matchedParks[i].distance = geolib.getDistance(
-        { lat: matchedParks[i].x_coord, lon: matchedParks[i].y_coord },
-        {
-          lat: userLocation.coords.latitude,
-          lon: userLocation.coords.longitude,
-        }
-      );
+      if (userLocation != undefined) {
+        matchedParks[i].distance = geolib.getDistance(
+          { lat: matchedParks[i].x_coord, lon: matchedParks[i].y_coord },
+          { lat: userLocation.coords.latitude, lon: userLocation.coords.longitude,}
+        )
+      }
     }
 
     if (selected.length > 0) {

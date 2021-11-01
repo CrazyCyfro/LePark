@@ -27,7 +27,8 @@ function HomePageScreen({ navigation }) {
   const [link, setLink] = useState([])
   const [addresses, setAddresses] = useState([])
   const [bgPark, setBgPark] = useState([])
-  const [bgParkInfo, setBgParkInfo] = useState([])
+  const [bgParkLink, setBgParkLink] = useState([])
+  const [bgParkAddress, setBgParkAddress] = useState([])
 
   const getParks = async () => {
     try {
@@ -69,7 +70,8 @@ function HomePageScreen({ navigation }) {
     try {
     let photoID = []
     let addresses = []
-    let bgParkInfo = []
+    let bgParkLink = []
+    let bgParkAddress = []
     if (randomParks.length == 4){
       for(let i = 0; i < randomParks.length; i++){
         let query = randomParks[i].park_name
@@ -91,12 +93,13 @@ function HomePageScreen({ navigation }) {
       const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${gcsAPIKey}&fields=name%2Cphotos%2Cformatted_address&input=${query}&inputtype=textquery`)
       const json = await response.json();
       if (!json.candidates[0].photos){
-          bgParkInfo.push("")
+          bgParkLink.push("")
       } else {
-          bgParkInfo.push(json.candidates[0].photos[0].photo_reference)
+          bgParkLink.push(json.candidates[0].photos[0].photo_reference)
       }
-      bgParkInfo.push(json.candidates[0].formatted_address)
-      setBgParkInfo(bgParkInfo)
+      bgParkAddress.push(json.candidates[0].formatted_address)
+      setBgParkLink(bgParkLink)
+      setBgParkAddress(bgParkAddress)
     }
 
     } catch (error) {
@@ -132,7 +135,7 @@ function HomePageScreen({ navigation }) {
   },[randomParks])
 
   // console.log(randomParks)
-  // console.log(bgPark)
+  console.log(bgPark)
   // console.log(bgParkInfo)
   // console.log(link)
   // console.log(addresses)
@@ -144,7 +147,7 @@ function HomePageScreen({ navigation }) {
         justifyContent: "flex-start", 
         alignItems: "center", 
         height: SCREEN_HEIGHT-STATUSBAR_HEIGHT,
-        paddingTop: STATUSBAR_HEIGHT
+        // paddingTop: STATUSBAR_HEIGHT
      }}
     >
       <StatusBar style={"light"}/>
@@ -157,8 +160,8 @@ function HomePageScreen({ navigation }) {
           width: "100%",
           height: "100%",
         }}
-        source={bgParkInfo[0] == "" ? require('../assets/park6.jpg') : 
-        {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photo_reference=${bgParkInfo[0]}&key=${gcsAPIKey}`}}
+        source={bgParkLink[0] == "" ? require('../assets/park6.jpg') : 
+        {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photo_reference=${bgParkLink[0]}&key=${gcsAPIKey}`}}
       >
         {/* empty view for background opacity */}
         <View
@@ -173,7 +176,11 @@ function HomePageScreen({ navigation }) {
         />
 
         {/* main view */}
-        <View
+        
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Details', {item:bgPark[0], index:0, link:bgParkLink, addresses:bgParkAddress})}
+          activeOpacity={0.8}
+          style={{position:'absolute'}}
           style={{
             flex: 1,
             width: "85%",
@@ -210,7 +217,7 @@ function HomePageScreen({ navigation }) {
           >
             EXPLORE
           </Text>
-        </View>
+        </TouchableOpacity>
 
         {/* cart */}
         <ScrollView

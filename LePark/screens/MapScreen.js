@@ -251,7 +251,7 @@ export default function MapScreen({ navigation }) {
           pinColor="orange"/>
         )
     } else {
-      return;
+      return null;
     }
   }
 

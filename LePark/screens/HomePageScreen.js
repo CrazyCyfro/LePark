@@ -135,7 +135,7 @@ function HomePageScreen({ navigation }) {
   },[randomParks])
 
   // console.log(randomParks)
-  console.log(bgPark)
+  // console.log(bgPark)
   // console.log(bgParkInfo)
   // console.log(link)
   // console.log(addresses)
@@ -150,7 +150,7 @@ function HomePageScreen({ navigation }) {
         // paddingTop: STATUSBAR_HEIGHT
      }}
     >
-      <StatusBar translucent={"false"}/>
+      <StatusBar translucent={false}/>
       {/* Main background Image */}
       <ImageBackground
         style={{

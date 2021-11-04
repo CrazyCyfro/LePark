@@ -18,6 +18,7 @@ import Carousel from 'react-native-snap-carousel'
 import {gcsAPIKey} from "@env";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { StatusBar } from "expo-status-bar";
+import ParkImage from "../utils/ParkImage";
 
 export default function MapScreen({ navigation }) {
   const [results, setResults] = useState([]);
@@ -182,14 +183,6 @@ export default function MapScreen({ navigation }) {
     }
   };
 
-  useEffect(() => {
-    getImg(results);
-  }, [results])
-
-  // useEffect(() => {
-  //   console.log(userLocation)
-  // })
-
   const getUserLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
@@ -215,10 +208,7 @@ export default function MapScreen({ navigation }) {
         <TouchableOpacity
           onPress={() => navigation.navigate('Details', {item:item, index:index, link:link, addresses:addresses})}>
           <View style={styles.imageFrame}>                        
-            <Image source={link[index] == "" ? require('../assets/park6.jpg') : 
-            {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photo_reference=${link[index]}&key=${gcsAPIKey}`}} 
-            loadingIndicatorSource={{uri: '../assets/adaptive-icon.png'}}
-            style={styles.image}/>                                
+            <ParkImage park_name={item.park_name} style={styles.image} />                                
           </View>
           <View style={styles.info}>
             <Text style={styles.parkText}>{item.park_name}</Text>
@@ -231,8 +221,6 @@ export default function MapScreen({ navigation }) {
               <Text style={{fontWeight: '400'}}>{isNaN(item.distance) ? null : ((item.distance)/1000).toFixed(2) + 'km'}</Text>
             </View>
           </View>
-
-
         </TouchableOpacity>
       </View>
     )

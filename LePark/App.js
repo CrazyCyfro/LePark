@@ -18,7 +18,6 @@ import SearchFilterScreen from "./screens/SearchFilterScreen";
 import SearchResults from "./screens/SearchResults";
 import MapScreen from "./screens/MapScreen";
 import ParkDetails from './screens/ParkDetails'
-import imgTest from "./screens/imgTest";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();

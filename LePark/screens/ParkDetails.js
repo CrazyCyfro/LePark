@@ -15,11 +15,9 @@ import { StyleSheet,
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { NavigationContainer } from '@react-navigation/native';
 import {gcsAPIKey} from "@env"
+import ParkImage from '../utils/ParkImage';
+import Address from '../utils/Address'
 
-
-//const RGEO_URL = 'https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json'
-//const RGEO_API_KEY = 'AI6HsgTR_Sc7GykoVzHa0prg-GWjZm6rv-XC5k7GWVM'
-//const gcsAPIKey = 'AIzaSyBj1aiWKe8oWnEsyvCaWFwCCDFo6Os5Ypw';
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -58,55 +56,19 @@ function ParkDetails({ route, navigation }) {
         }
     }
 
-    // const parkImages = [
-    //     require('../assets/park1.png'),
-    //     require('../assets/park2.jpg'),
-    //     require('../assets/park3.jpg'),
-    //     require('../assets/park4.jpg'),
-    //     require('../assets/park5.jpg'),
-    //     require('../assets/park6.jpg'),
-    //     //require('../assets/park7.jpg'),
-    //     require('../assets/park8.jpg')
-    // ]
-
     const item = route.params.item;
-    const addresses = route.params.addresses;
-    const index = route.params.index;
-    const link = route.params.link;
 
     const dist = ((item.distance)/1000).toFixed(2)
     const {width} = Dimensions.get("window");
     const height = width*0.8;
-
-    // const [address, setAddress] = useState([]);
-    // const getAddress = () => {
-    //     fetch(RGEO_URL.concat(`?apiKey=${RGEO_API_KEY}&mode=retrieveLandmarks&gen=9&prox=${lat},${long}`),{
-    //         method: 'GET'
-    //     })
-    //     .then(response => response.json())
-    //     .then(result => {
-    //         setAddress(result.Response.View[0].Result[1].Location.Address.Street)
-    //     })
-    //     .catch(error => console.log(error))
-    // }
-    // useEffect(() =>{
-    //     let address = getAddress()
-    // },[])
-
-    //var randomNumber = Math.floor(Math.random() * 5) + 1 ;
     
     return (
         <SafeAreaView style={styles.window}>
             <ScrollView>
-                <Image
-                    source={link[index] == "" ? require('../assets/park6.jpg') : {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${link[index]}&key=${gcsAPIKey}`}} 
-                    loadingIndicatorSource={{uri: '../assets/adaptive-icon.png'}}
-                    style={styles.image}
-                    style={{width, height}}
-                />
+                <ParkImage park_name={item.park_name} style={{width,height}}/>
                 <View style={styles.container}>
                     <Text style={styles.topHeader}>{item.park_name}</Text>
-                    <Text style={styles.address}>{addresses[index]}</Text>
+                    <Address park_name={item.park_name} style={styles.address}/>
                     <View style={styles.location}>
                         <FontAwesome5
                             name="map-marker-alt" 
@@ -201,7 +163,7 @@ const styles = StyleSheet.create({
         borderRadius:10
     },
     window: {
-        paddingTop: STATUSBAR_HEIGHT,
+        // paddingTop: STATUSBAR_HEIGHT,
         height: SCREEN_HEIGHT - STATUSBAR_HEIGHT
     }
 })

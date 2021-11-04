@@ -8,7 +8,7 @@ export default function ParkImage(props) {
 
     const [link, setLink] = useState([]);
 
-    const getImg = async () => {
+    const getImg = async (cancel) => {
         try {
         let photoID = []
         let query = props.park_name
@@ -19,14 +19,22 @@ export default function ParkImage(props) {
         } else {
             photoID.push(json.candidates[0].photos[0].photo_reference)
         }
+        if (!cancel){
           setLink(photoID)
+        }
+          
         } catch (error) {
           console.log(error);
         }
       };
 
     useEffect(() => {
-        getImg()
+      let cancel = false
+        getImg(cancel)
+
+      return () => {
+        cancel = true
+      }
     }, [])
 
     // console.log(link)

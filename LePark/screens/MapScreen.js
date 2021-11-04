@@ -304,7 +304,7 @@ export default function MapScreen({ navigation }) {
           color: "#1f4c50",
           left: 20, 
           top: -47, 
-          fontSize: 30,
+          fontSize:results.length > 0 ? 30: 0,
         }}>RESULTS</Text>
         <Carousel
           layout={"default"}

@@ -1,16 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  ActivityIndicator,
-  FlatList,
 } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { NavigationContainer } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // screens
 import HomePageScreen from "./screens/HomePageScreen";
@@ -68,6 +66,19 @@ function ParkDetailsScreen() {
 
 
 export default function App() {
+  useEffect(() => {
+    clearSearchResults();
+  }, [])
+
+  const clearSearchResults = async () => {
+    try {
+      await AsyncStorage.removeItem("SearchResults");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   return (
     <NavigationContainer>
       <Tab.Navigator

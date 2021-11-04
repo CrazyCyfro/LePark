@@ -8,7 +8,7 @@ LePark is an app designed for the CZ2006, Software Engineering module at Singapo
 
 https://nodejs.org/en/
 
-### Running the app
+## Running the app
 
 Clone the repository onto your local machine
 
@@ -19,4 +19,3 @@ Open a terminal inside the folder LePark, then run the following command to inst
 To run the app, enter the following command
 
     npm start
-
